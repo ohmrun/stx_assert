@@ -1,0 +1,34 @@
+package stx.macro.clone;
+
+import haxe.ds.StringMap;
+using thx.Maps;
+import Map;
+
+@:allow(stx.macro.clone.Tree) abstract Tree(IMap<String,ObjectTreeNode>) from IMap<String,ObjectTreeNode>{
+  public inline function new( ?v ) {
+    this = v;
+    if(this == null){
+      this = new StringMap();
+    }
+  }
+  function toMap():IMap<String,ObjectTreeNode>{
+    return this;
+  }
+  public inline function add(o:ObjectTreeNode){
+    var next = copy().toMap();
+        next.set(o.path.toString(),o);
+    return next;
+  }
+  public function copy():Tree{
+    var next = new StringMap();
+    this.copyTo(next);
+    return next;
+  }
+  public function toString(){
+    return this.map(
+      function(x){
+        return x.path.toString();
+      }
+    );
+  }f
+}

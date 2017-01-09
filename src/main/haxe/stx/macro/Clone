@@ -1,0 +1,220 @@
+gpackage stx.macro;
+
+
+using haxe.macro.ComplexTypeTools;
+
+#if macro
+using tink.MacroApi;
+#end
+using stx.Tuple;
+using Lambda;
+import haxe.ds.Option;
+
+using stx.Transducers;
+using stx.Pointwise;
+
+import haxe.macro.*;
+
+import haxe.macro.Type;
+import haxe.macro.Expr;
+
+@:forward abstract ERef(Expr) from Expr{
+  public inline function new( v : Expr ) {
+    this = v;
+  }
+}
+class Clone{
+  static var cloners : Map<std.String,Expr->(Void->Expr)>;
+
+  static function clonerise(t:Type){
+    var hash = Context.signature(t);
+    trace(hash);
+  }
+  static public macro function clone(expr:Expr){
+    if(cloners == null){
+      cloners = new Map();
+    }
+    var pos            = Context.currentPos();
+    var printer        = new Printer();
+    var traceExpr      = function(x:Expr,?pos:haxe.PosInfos){
+      haxe.Log.trace(printer.printExpr(x),pos);
+    }
+    var traceType = function(t:Type,?pos:haxe.PosInfos){
+      haxe.Log.trace(printer.printComplexType(Types.toComplex(t)),pos);
+    }
+    var type    = Context.typeof(expr);
+
+    var handle = null;
+    function apply(t:Type,input_ref:Expr):Void->Expr{
+      //trace('apply \n ${printer.printComplexType(Types.toComplex(t))} \n "${printer.printExpr(input_ref)}"');
+      var o : Void -> Expr =  switch t {
+        case TAnonymous(at):
+          handle(t)(input_ref);
+        case TInst(type,params) if (type.get().name == "Array"):
+          handle(t)(input_ref);
+        case TAbstract(a,params) if (a.get().name == "Int") :
+          input_ref.toThunk();
+        case TAbstract(a,params) if (a.get().name == "Bool") :
+          input_ref.toThunk();
+        case TInst(type,_):
+          handle(t)(input_ref);
+        default:
+          //trace(t);
+          input_ref.toThunk();
+      }
+      return o;
+    }
+    handle = function(t:Type):Expr->(Void->Expr){
+      var hash = Context.signature(t);
+      return if(cloners.exists(hash)){
+        cloners.get(hash);
+      }else{
+        cloners.set(hash,
+          function(e:Expr){
+            return handle(t)(e);
+          }
+        );
+        switch(t){
+          case TAnonymous(type):
+            if(isIterable(type)){
+              var params = switch (type.get().fields[0].type) {
+                case TFun([],TType(v,params)): params;
+                default: null;
+              }
+              var t_complex         = Types.toComplex(t);
+              var inner             = params[0];
+              var inner_constuctor  = handle(inner);
+
+              var ctype             = inner.toComplex();
+              var identifier        = macro $i{"element"};
+              var constructor       = function(input_ref){
+                var output =  macro{
+                  var output = new Array<$ctype>();
+
+                  for(element in $input_ref){
+                      var cloned_element = ${inner_constuctor(identifier)()};
+                      output.push(cloned_element);
+                  }
+                  var real : Iterable<$ctype> = output;
+                  real;
+                }
+                //traceExpr(output);
+                return output.toThunk();
+              }
+              constructor;
+            }else{
+              var inner       = type.get();
+              var constructor = function(type:AnonType,arr:Array<ClassField>,input_ref:Expr) {
+                var pull      = function(field:ClassField){
+                  var name    = field.name;
+                  var r_ref   = macro $input_ref.$name;
+                  var r_expr  = apply(field.type,r_ref)();
+                  return { field : name, expr : r_expr };
+                }.map()(T.toArray);
+                return { expr : EObjectDecl((arr:Reducible<ClassField>).reduce(pull,[])), pos : pos }.toThunk();
+              }
+              constructor.bind(inner,inner.fields);
+            }
+          case TInst(type,params) if (type.get().name == "String"):
+            noop().then(Pointwise.toThunk);
+          case TInst(type,params) if (type.get().name == "Array" ):
+            var inner             = params[0];
+            
+            var inner_constuctor  = handle(inner);
+            var ctype             = inner.toComplex();
+            var identifier        = macro $i{"element"};
+            var constructor       = function(input_ref){
+              var output =  macro{
+                var output = new Array<$ctype>();
+                for(element in $input_ref){
+                  for(element in $input_ref){
+                      var cloned_element = ${inner_constuctor(identifier)()};
+                      output.push(cloned_element);
+                  }
+                }
+                output;
+              }
+              //traceExpr(output);
+              return output.toThunk();
+            }
+            constructor;
+          case TInst(t0,params):
+              var t_id = Types.getID(t);
+              var complex_t       = Types.toComplex(t);
+              var complex_t_view  = complex_t.toString();
+              var assigments = t0.get().fields.get().map(
+                function(field){
+                  var name            = field.name;
+                  var inner_t         = field.type;
+                  var inner_t_handler = handle(inner_t);
+
+                  return function(input_ref:Expr):Expr{
+                    return Exprs.assign(
+                      macro class_new.$name,
+                      macro $input_ref.$name
+                    );
+                  }
+                }
+              );
+              var constructor = function(input_ref){
+                var output = macro{
+                  var class_name : String         = $v{t_id};
+                  var class_type : Class<Dynamic> = Type.resolveClass(class_name);
+                  var class_new : $complex_t      = Type.createEmptyInstance(class_type);
+                  $b{assigments.map(Unary.apply.bind(_,input_ref))};
+                  class_new;
+                };
+                return output;
+              }
+              constructor.then(Pointwise.toThunk);
+          default:
+            //traceType(t);
+            noop().then(Pointwise.toThunk);
+        }
+      }
+    }
+    var out = apply(type,expr);
+    //traceExpr(out);
+    return out();
+  }
+  static function isIterable(a:Ref<AnonType>){
+    var is_iterable = false;
+    var deets = a.get();
+    var has_one_field = deets.fields.length == 1;
+    if(has_one_field){
+      var field_called_iterator           = false;
+      var field                           = deets.fields[0];
+      field_called_iterator               = field.name == "iterator";
+      if(field_called_iterator){
+        var field_is_function = switch field.type{
+          case TFun(_,_): true;
+          default       : false;
+        }
+        if(field_is_function){
+          var is_iterator = switch(field.type){
+            case TFun([],TType(v,params)):
+              var possible_iter_type = v.get();
+              possible_iter_type.module == "StdTypes" && possible_iter_type.name == "Iterator";
+            default : false;
+          }
+          is_iterable = is_iterator;
+        }
+      }
+    }
+    return is_iterable;
+  }
+}
+class State{
+  public function new(){}
+}
+class Node {
+  public function new(type,?name,?parent){
+    this.type   = type;
+    this.name   = name;
+    this.parent = parent;
+  }
+  public var parent : Node;
+  public var name   : String;
+  public var type   : Type;
+  public var block  : Expr->Expr;
+}
