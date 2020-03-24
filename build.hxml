@@ -1,0 +1,15 @@
+-main Main
+--interp
+
+-lib utest
+
+-lib tink_core
+
+-lib stx_core
+-lib stx_std
+-lib stx_ds
+-lib stx_log
+
+-cp src/main/haxe
+
+-D test=stx_assert

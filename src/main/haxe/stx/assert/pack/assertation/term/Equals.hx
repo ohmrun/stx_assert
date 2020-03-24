@@ -1,0 +1,11 @@
+package stx.assert.pack.assertation.term;
+
+class Equals<T> extends Base<T>{
+  public function new(?pos){
+    super(pos);
+  }
+
+  override public function applyII(a:T,b:T){
+    return (a != b).report(error());
+  }
+}
