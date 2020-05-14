@@ -1,4 +1,4 @@
-package stx.assert.pack.assertation.term;
+package stx.assert.pack.assertion.term;
 
 class Equals<T> extends Base<T>{
   public function new(?pos){

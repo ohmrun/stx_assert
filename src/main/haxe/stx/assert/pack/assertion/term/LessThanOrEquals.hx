@@ -1,12 +1,12 @@
-package stx.assert.pack.assertation.term;
+package stx.assert.pack.assertion.term;
 
-class LessThan<T> extends Base<T>{
+class LessThanOrEquals<T> extends Base<T>{
   public function new(?pos){
     super(pos);
   }
   override public function applyII(a:T,b:T){
     var l : Dynamic = a;
     var r : Dynamic = b;
-    return (l<r).report(error());
+    return (l <= r).report(error());
   }
 }

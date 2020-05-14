@@ -10,9 +10,9 @@ class Couple<L,R> implements ComparableApi<StdCouple<L,R>>{
     this.r = r;
   }
   public function eq() : Eq<StdCouple<L,R>>{
-    return Eq.term.couple(l.eq(),r.eq());
+    return Eq.couple(l.eq(),r.eq());
   }
   public function lt() : Ord<StdCouple<L,R>>{
-    return Ord.term.couple(l.lt(),r.lt());
+    return Ord.couple(l.lt(),r.lt());
   }
 }

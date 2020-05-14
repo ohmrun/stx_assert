@@ -1,8 +1,8 @@
-package stx.assert.pack.assertation.term;
+package stx.assert.pack.assertion.term;
 
-class Base<T> implements AssertationApi<T,AssertFailure> extends Clazz{
+class Base<T> implements AssertionApi<T,AssertFailure> extends Clazz{
   var pos : Pos;
-  public function new(?pos){
+  public function new(?pos:Pos){
     super();
     this.pos = pos;
   }
@@ -11,5 +11,8 @@ class Base<T> implements AssertationApi<T,AssertFailure> extends Clazz{
   }
   public function error(?l,?r,?pos:Pos){
     return __.fault(pos).of(PredicateFailed(definition(),l,r));
+  }
+  public function asAssertionApi():AssertionApi<T,AssertFailure>{
+    return this;
   }
 }

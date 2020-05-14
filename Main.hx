@@ -1,7 +1,15 @@
+#if (test=="stx_assert")
+  import stx.assert.test.*;
+#end
 class Main{
   static function main(){
-    #if test
-      utest.UTest.run(stx.Assert.tests());
+    trace('main');
+    #if (test=="stx_assert")
+      utest.UTest.run(
+        [
+          new ComparablesTest()
+        ]
+      );
     #end
   }
 }

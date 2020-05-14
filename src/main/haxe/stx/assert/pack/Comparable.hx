@@ -9,13 +9,13 @@ import stx.assert.pack.comparable.term.Couple;
 
   public function new(self) this = self;
 
-  static public function int():Comparable<StdInt>{
+  @:noUsing static public function int():Comparable<StdInt>{
     return new Int();
   }
-  static public function string():Comparable<StdString>{
+  @:noUsing static public function string():Comparable<StdString>{
     return new String();
   }
-  static public function couple<L,R>(l,r):Comparable<StdCouple<L,R>>{
+  @:noUsing static public function couple<L,R>(l,r):Comparable<StdCouple<L,R>>{
     return new Couple(l,r);
   }
 }

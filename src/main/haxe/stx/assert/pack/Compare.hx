@@ -4,7 +4,7 @@ abstract Compare<T>(CompareSum<T>) from CompareSum<T> to CompareSum<T>{
   public function new(self){
     this = self;
   }
-  static public function pure<T>(v:T):Compare<T>{
+  @:noUsing static public function pure<T>(v:T):Compare<T>{
     return Value(v);
   }
   @:op(A && A)

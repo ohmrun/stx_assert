@@ -1,16 +1,12 @@
 package stx;
 
-#if (test=="stx_assert")
-  import stx.assert.test.*;
-#end
+
+
 
 typedef AssertFailure           = stx.assert.pack.AssertFailure;
 
-typedef AssertionApi<P>         = stx.assert.type.AssertionApi<P>;
-typedef Assertion<P>            = stx.assert.pack.Assertion<P>;
-
-typedef AssertationApi<P,E>     = stx.assert.type.AssertationApi<P,E>;
-typedef Assertation<P,E>        = stx.assert.pack.Assertation<P,E>;
+typedef AssertionApi<P,E>       = stx.assert.type.AssertionApi<P,E>;
+typedef Assertion<P,E>          = stx.assert.pack.Assertion<P,E>;
 
 typedef ComparableApi<P>        = stx.assert.type.ComparableApi<P>;
 typedef Comparable<P>           = stx.assert.pack.Comparable<P>;
@@ -40,19 +36,13 @@ typedef ComparativeSum          = stx.assert.type.ComparativeSum;
 typedef Compare<T>              = stx.assert.pack.Compare<T>;
 
 class Assert{
-  #if (test=="stx_assert")
-    static public function tests():Array<utest.Test>{
-      return [
-        new ComparablesTest()
-      ];
-    }
-  #end
+
 }
 class LiftAssert{
   static public inline function that<T,E>(stx:Wildcard,?pos:Pos){
-    return new stx.assert.module.That(pos);
+    return new stx.assert.Module(pos);
   }
-  static public function assert(__:Wildcard,?pos:Pos) return new stx.assert.Module(pos);
+  static public function assert(__:Wildcard,?pos:Pos) return new stx.assert.module.Crunch(pos);
 
   static public function report<E>(b:Bool,err:Err<E>){
     return b ? Report.unit() : Report.pure(err);

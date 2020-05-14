@@ -1,7 +1,5 @@
 package stx.assert.pack.eq.term;
 
-import stx.core.alias.StdArray;
-
 class Array<V> implements EqApi<StdArray<V>>{
   var eq : Eq<V>;
 

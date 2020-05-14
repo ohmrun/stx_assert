@@ -1,4 +1,4 @@
-package stx.assert.pack.assertation.term;
+package stx.assert.pack.assertion.term;
 
 class Alike extends Base<StdEnumValue>{
   public function new(?pos){

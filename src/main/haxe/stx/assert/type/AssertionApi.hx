@@ -1,5 +1,6 @@
 package stx.assert.type;
 
-interface AssertionApi<P> extends App2R<P,P,Bool>{
-
+interface AssertionApi<P,E>{
+  public function applyII(lhs:P,rhs:P):Report<E>;
+  public function asAssertionApi():AssertionApi<P,E>;
 }

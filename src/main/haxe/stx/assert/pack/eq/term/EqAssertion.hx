@@ -1,14 +1,13 @@
 package stx.assert.pack.eq.term;
 
-class EqAssertion<T> implements AssertionApi<T>{
+class EqAssertion<T> extends stx.assert.pack.assertion.term.Base<T>{
   var eq      : Eq<T>;
-  var fault   : Fault;
 
-  public function new(eq,fault){
+  public function new(eq:Eq<T>,?pos:Pos){
+    super(pos);
     this.eq     = eq;
-    this.fault  = fault;
   }
-  public function applyII(a:T,b:T):Bool{
-    return eq.applyII(a,b).toBool();
+  override public function applyII(a:T,b:T):Report<AssertFailure>{
+    return eq.applyII(a,b).toBool().report(__.fault(pos).of(PredicateFailed(definition(),a,b)));
   }
 }
