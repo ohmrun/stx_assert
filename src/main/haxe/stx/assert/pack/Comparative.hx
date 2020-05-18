@@ -1,5 +1,13 @@
 package stx.assert.pack;
 
+enum ComparativeSum{
+  GT;
+  GTEQ;
+  LT;
+  LTEQ;
+  EQ;
+}
+
 abstract Comparative(ComparativeSum) from ComparativeSum{
   public function new(self) this = self;
   public function toString(){

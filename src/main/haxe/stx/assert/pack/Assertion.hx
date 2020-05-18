@@ -2,6 +2,11 @@ package stx.assert.pack;
 
 import stx.assert.pack.assertion.term.*;
 
+interface AssertionApi<P,E>{
+  public function applyII(lhs:P,rhs:P):Report<E>;
+  public function asAssertionApi():AssertionApi<P,E>;
+}
+
 @:forward abstract Assertion<T,E>(AssertionApi<T,E>) from AssertionApi<T,E>{
   public function crunchII(l:T,r:T){
     switch(this.applyII(l,r)){

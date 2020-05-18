@@ -1,5 +1,14 @@
 package stx.assert.pack;
 
+enum abstract OrderedSum(Bool) from Bool{
+  var LessThan    = true;
+  var NotLessThan = false;
+
+  public function ok():Bool{
+    return this;
+  }
+}
+
 @:forward abstract Ordered(OrderedSum) from OrderedSum to OrderedSum{
   public function new(self){
     this = self;

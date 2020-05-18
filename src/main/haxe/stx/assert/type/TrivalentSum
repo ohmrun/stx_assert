@@ -1,7 +1,0 @@
-package stx.assert.type;
-
-enum Trivalent{
-  Unknown;
-  True;
-  False;
-}

@@ -1,6 +1,16 @@
 package stx.assert.pack;
 
 
+
+enum abstract EqualedSum(Bool) from Bool{
+  var AreEqual = true;
+  var NotEqual = false;
+
+  public function ok():Bool{
+    return this;
+  }
+}
+
 @:forward @:allow(stx.assert.pack.Equaled)abstract Equaled(EqualedSum) from EqualedSum to EqualedSum{
   @:from static public function fromBool(b:Bool):Equaled{
     return b  ? AreEqual : NotEqual;

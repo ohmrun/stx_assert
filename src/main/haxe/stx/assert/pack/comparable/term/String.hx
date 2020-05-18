@@ -3,9 +3,9 @@ package stx.assert.pack.comparable.term;
 
 class String implements ComparableApi<StdString> extends Clazz{
   public function eq() : Eq<StdString>{
-    return Eq.string();
+    return Eq.String();
   }
   public function lt() : Ord<StdString>{
-    return Ord.string();
+    return Ord.String();
   }
 }

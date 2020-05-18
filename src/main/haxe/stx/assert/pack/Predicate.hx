@@ -2,6 +2,11 @@ package stx.assert.pack;
 
 import stx.assert.pack.predicate.term.*;
 
+interface PredicateApi<P,E>{
+  public function applyI(p:P):Report<E>;
+}
+
+
 @:using(stx.assert.pack.Predicate.PredicateLift)
 @:forward abstract Predicate<T,E>(PredicateApi<T,E>) from PredicateApi<T,E> to PredicateApi<T,E>{
   static public var _(default,null) = PredicateLift;
