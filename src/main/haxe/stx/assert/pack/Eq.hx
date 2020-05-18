@@ -1,5 +1,6 @@
 package stx.assert.pack;
 
+import stx.assert.pack.eq.term.Anon;
 import stx.assert.pack.eq.term.*;
 import stx.assert.pack.eq.term.Couple;
 import stx.assert.pack.eq.term.Int;
@@ -24,5 +25,8 @@ interface EqApi<T>{
   }
   @:noUsing static public function Couple<L,R>(l:Eq<L>,r:Eq<R>):Eq<StdCouple<L,R>>{
     return new Couple(l,r);
+  }
+  @:noUsing static public function Anon<T>(fn:T->T->Equaled):Eq<T>{
+    return new Anon(fn);
   }
 }
