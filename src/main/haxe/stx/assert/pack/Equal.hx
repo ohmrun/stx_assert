@@ -11,7 +11,7 @@ import stx.assert.pack.eq.term.Unknown;
 
 class Equal{
   static public function getEqualFor<T>(v:T):Eq<T>{
-    return getEqualForType(StdType.typeof(v));
+    return getEqualForType(std.Type.typeof(v));
   }
   static public function getEqualForType<T>(v: ValueType):Eq<T>{
     return new NotNull(switch (v){
@@ -26,7 +26,7 @@ class Equal{
       case TClass( c ) if ( c == String )                               :   new String();
       case TEnum(_)                                                     :   new Enum();
       case TClass( c )                                                  :
-        if(StdType.getInstanceFields(c).remove("equals")){
+        if(std.Type.getInstanceFields(c).remove("equals")){
           new HasFunction().elide();
         }else{
           new UnsupportedClass();

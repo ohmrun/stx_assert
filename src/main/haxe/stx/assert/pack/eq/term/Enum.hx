@@ -2,7 +2,7 @@ package stx.assert.pack.eq.term;
 
 class Enum implements EqApi<Dynamic> extends Clazz{
   public function applyII(a:Dynamic,b:Dynamic):Equaled{
-    return if(0 != StdType.enumIndex(a) - StdType.enumIndex(b)){
+    return if(0 != std.Type.enumIndex(a) - std.Type.enumIndex(b)){
       NotEqual;
     }else{
       var pa  = StdType.enumParameters(a);
