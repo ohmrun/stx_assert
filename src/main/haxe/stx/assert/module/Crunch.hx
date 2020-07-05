@@ -15,7 +15,7 @@ class Crunch extends Clazz{
 
   public function always<T>(t:T)                                      this.module.always().crunch(t);
   public function never<T,E>(t:T)                                     this.module.never().crunch(t);
-  public function is<A>(a:A,clazz:Class<A>)                           this.module.is(clazz).crunch(a);
+  public function iz<A>(a:A,clazz:Class<A>)                           this.module.iz(clazz).crunch(a);
   public function throws<E>(fn:Block)                                 this.module.throws().crunch(fn);
   public function void<T>(t:T)                                        this.module.void().crunch(t);
   public function exists<T>(t:T)                                      this.module.exists().crunch(t);

@@ -8,7 +8,7 @@ class Is<T> extends Base<T>{
     this.type   = type;
   }
   override public function applyI<E>(v:T){
-    var bool  = std.Std.is(v,type);
+    var bool  = std.Std.isOfType(v,type);
     var err   = __.fault().of(PredicateFailed(definition(),v));
     return bool.report(err);
   }

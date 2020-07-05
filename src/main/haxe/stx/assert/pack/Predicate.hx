@@ -13,6 +13,9 @@ interface PredicateApi<P,E>{
 
   public function new(v:PredicateApi<T,E>) this = v;
 
+  @:noUsing static public function Natural<T>(method:T->Bool,?pos:Pos):Predicate<T,AssertFailure>{
+    return new Natural(method,pos);
+  }
   @:noUsing static public function unit<T,E>():Predicate<T,E> return new Always();
   @:noUsing static public function always<T>(?pos:Pos):Predicate<T,AssertFailure>{
     return new Always();
@@ -20,7 +23,7 @@ interface PredicateApi<P,E>{
   @:noUsing static public function never<T,E>(?pos:Pos):Predicate<T,E>{
     return new Never(pos);
   }
-  @:noUsing static public inline function is<A>(?pos:Pos,clazz:Class<A>):Predicate<A,AssertFailure>{
+  @:noUsing static public inline function iz<A>(?pos:Pos,clazz:Class<A>):Predicate<A,AssertFailure>{
     return new Is(clazz,pos);
   }
   @:noUsing static public inline function throws<E>(?pos:Pos):Predicate<Block,AssertFailure>{

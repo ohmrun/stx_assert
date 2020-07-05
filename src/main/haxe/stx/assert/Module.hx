@@ -15,7 +15,7 @@ class Module extends Clazz{
 
   public function always<T>():Predicate<T,AssertFailure>                                      return Predicate.always(pos);
   public function never<T,E>():Predicate<T,E>                                                 return Predicate.never(pos);
-  public function is<A>(clazz:Class<A>):Predicate<A,AssertFailure>                            return Predicate.is(pos,clazz);
+  public function iz<A>(clazz:Class<A>):Predicate<A,AssertFailure>                            return Predicate.iz(pos,clazz);
   public function throws<E>():Predicate<Block,AssertFailure>                                  return Predicate.throws(pos);
   public function void<T>():Predicate<T,AssertFailure>                                        return Predicate.void(pos);
   public function exists<T>():Predicate<T,AssertFailure>                                      return Predicate.exists(pos);
