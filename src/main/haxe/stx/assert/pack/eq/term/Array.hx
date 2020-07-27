@@ -1,10 +1,10 @@
 package stx.assert.pack.eq.term;
 
 class Array<V> implements EqApi<StdArray<V>>{
-  var eq : Eq<V>;
+  var inner : Eq<V>;
 
-  public function new(eq){
-    this.eq = eq;
+  public function new(inner){
+    this.inner = inner;
   }
   public function applyII(a:StdArray<V>,b:StdArray<V>):Equaled{
 
@@ -17,7 +17,7 @@ class Array<V> implements EqApi<StdArray<V>>{
     for(i in 0...a.length-1){
       var lhs = a[i];
       var rhs = b[i];
-      ok = eq.applyII(lhs,rhs);
+      ok = inner.applyII(lhs,rhs);
       if(!ok.ok()){break;}
     }
     return ok;

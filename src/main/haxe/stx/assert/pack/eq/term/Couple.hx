@@ -1,6 +1,6 @@
 package stx.assert.pack.eq.term;
 
-class Couple<L,R> implements EqApi<stx.core.pack.Couple<L,R>>{
+class Couple<L,R> implements EqApi<stx.nano.Couple<L,R>>{
   var l : Eq<L>;
   var r : Eq<R>;
 

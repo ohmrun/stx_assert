@@ -1,5 +1,6 @@
 package stx.assert.pack;
 
+import stx.assert.pack.eq.term.Noise; 
 import stx.assert.pack.eq.term.Anon;
 import stx.assert.pack.eq.term.*;
 import stx.assert.pack.eq.term.Couple;
@@ -28,5 +29,21 @@ interface EqApi<T>{
   }
   @:noUsing static public function Anon<T>(fn:T->T->Equaled):Eq<T>{
     return new Anon(fn);
+  }
+  @:noUsing static public function Noise():Eq<tink.core.Noise>{
+    return new Eq(new Noise());
+  }
+  @:noUsing static public function Bool():Eq<StdBool>{
+    return Anon(
+      (l,r) -> l == r ? AreEqual : NotEqual
+    );
+  }
+  @:noUsing static public function Float():Eq<StdFloat>{
+    return Anon(
+      (l,r) -> l == r ? AreEqual : NotEqual
+    );
+  }
+  @:noUsing static public function Array(inner){
+    return new Array(inner);
   }
 }

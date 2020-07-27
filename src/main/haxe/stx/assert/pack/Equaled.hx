@@ -1,13 +1,15 @@
 package stx.assert.pack;
 
-
-
 enum abstract EqualedSum(Bool) from Bool{
   var AreEqual = true;
   var NotEqual = false;
 
   public function ok():Bool{
     return this;
+  }
+  @:op(A && B)
+  public function and(that:Equaled):Equaled{
+    return ((this && that.ok()):Equaled);
   }
 }
 

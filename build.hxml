@@ -8,7 +8,7 @@
 -lib stx_pico
 -lib stx_nano
 -lib stx_log
-
+-lib stx_ext 
 -cp src/main/haxe
 
 -D test=stx_assert

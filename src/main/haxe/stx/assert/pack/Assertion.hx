@@ -9,7 +9,7 @@ interface AssertionApi<P,E>{
 
 @:forward abstract Assertion<T,E>(AssertionApi<T,E>) from AssertionApi<T,E>{
   public function crunchII(l:T,r:T){
-    switch(this.applyII(l,r)){
+    switch(this.applyII(l,r).prj()){
       case Some(e) : throw e;
       default:
     }

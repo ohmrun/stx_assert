@@ -6,7 +6,6 @@ interface PredicateApi<P,E>{
   public function applyI(p:P):Report<E>;
 }
 
-
 @:using(stx.assert.pack.Predicate.PredicateLift)
 @:forward abstract Predicate<T,E>(PredicateApi<T,E>) from PredicateApi<T,E> to PredicateApi<T,E>{
   static public var _(default,null) = PredicateLift;
@@ -38,15 +37,18 @@ interface PredicateApi<P,E>{
   @:noUsing static public inline function matches<E>(?pos:Pos,reg:String,opt:String):Predicate<String,AssertFailure>{
     return new Matches(pos,reg,opt);
   }  
-
+  //TODO this is wrong, surely.
   public inline function ordef(l:T,r:T):T{
     return this.applyI(l).is_defined() ? r : l;
   }
   public inline function fudge(v:T):T{
-    return switch(this.applyI(v)){
+    return switch(this.applyI(v).prj()){
       case Some(v)  : throw v;
       case None     : v;
     }
+  }
+  public inline function ok():T->Bool{
+    return this.applyI.fn().then( report -> report.ok());
   }
   public inline function bindI(v){
     return this.applyI.bind(v);
@@ -55,7 +57,7 @@ interface PredicateApi<P,E>{
     return (x) -> this.applyI(x) == None;
   }
   inline public function crunch(v:T){
-    switch(this.applyI(v)){
+    switch(this.applyI(v).prj()){
       case Some(e) : throw e;
       default:
     }

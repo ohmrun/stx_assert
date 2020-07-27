@@ -11,9 +11,10 @@ import stx.alias.StdType;
 using stx.Pico;
 using stx.Nano;
 using stx.Fn;
+using stx.Ext;
 
 using stx.Assert;
 
 using tink.CoreApi;
 
-import stx.core.pack.Couple in StdCouple;
+import stx.nano.Couple in StdCouple;
