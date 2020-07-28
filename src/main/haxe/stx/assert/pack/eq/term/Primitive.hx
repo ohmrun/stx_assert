@@ -1,6 +1,6 @@
 package stx.assert.pack.eq.term;
 
-import stx.core.pack.Primitive in PrimitiveT;
+import stx.nano.Primitive in PrimitiveT;
 
 class Primitive implements EqApi<PrimitiveT> extends Clazz{
   public function applyII(lhs:PrimitiveT,rhs:PrimitiveT):Equaled{

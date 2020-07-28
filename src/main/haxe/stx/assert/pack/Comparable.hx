@@ -1,5 +1,6 @@
 package stx.assert.pack;
 
+import stx.assert.pack.comparable.term.Primitive;
 import stx.assert.pack.comparable.term.Int;
 import stx.assert.pack.comparable.term.String;
 import stx.assert.pack.comparable.term.Couple;
@@ -21,5 +22,8 @@ interface ComparableApi<P> extends EqualableApi<P> extends OrderableApi<P>{
   }
   @:noUsing static public function Couple<L,R>(l,r):Comparable<StdCouple<L,R>>{
     return new Couple(l,r);
+  }
+  @:noUsing static public function Primitive():Comparable<stx.nano.Primitive>{
+    return new Primitive();
   }
 }

@@ -1,5 +1,6 @@
 package stx.assert.pack;
 
+import stx.assert.pack.eq.term.Primitive; 
 import stx.assert.pack.eq.term.Noise; 
 import stx.assert.pack.eq.term.Anon;
 import stx.assert.pack.eq.term.*;
@@ -43,7 +44,10 @@ interface EqApi<T>{
       (l,r) -> l == r ? AreEqual : NotEqual
     );
   }
-  @:noUsing static public function Array(inner){
+  @:noUsing static public function Array<T>(inner:Eq<T>):Eq<StdArray<T>>{
     return new Array(inner);
+  }
+  @:noUsing static public function Primitive():Eq<stx.nano.Primitive>{
+    return new Primitive();
   }
 }
