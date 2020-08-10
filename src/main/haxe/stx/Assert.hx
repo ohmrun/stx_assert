@@ -1,43 +1,43 @@
 package stx;
 
 
-typedef AssertFailure           = stx.assert.pack.AssertFailure;
+typedef AssertFailure           = stx.fail.AssertFailure;
 
-typedef AssertionApi<P,E>       = stx.assert.pack.Assertion.AssertionApi<P,E>;
-typedef Assertion<P,E>          = stx.assert.pack.Assertion<P,E>;
+typedef AssertionApi<P,E>       = stx.assert.Assertion.AssertionApi<P,E>;
+typedef Assertion<P,E>          = stx.assert.Assertion<P,E>;
 
-typedef ComparableApi<P>        = stx.assert.pack.Comparable.ComparableApi<P>;
-typedef Comparable<P>           = stx.assert.pack.Comparable<P>;
+typedef ComparableApi<P>        = stx.assert.Comparable.ComparableApi<P>;
+typedef Comparable<P>           = stx.assert.Comparable<P>;
 
-typedef Equal                   = stx.assert.pack.Equal;
+typedef Equal                   = stx.assert.Equal;
 
-typedef EqApi<T>                = stx.assert.pack.Eq.EqApi<T>;
-typedef Eq<T>                   = stx.assert.pack.Eq<T>;
+typedef EqApi<T>                = stx.assert.Eq.EqApi<T>;
+typedef Eq<T>                   = stx.assert.Eq<T>;
 
-typedef EqualableApi<T>         = stx.assert.pack.Equalable.EqualableApi<T>;
-typedef Equalable<T>            = stx.assert.pack.Equalable<T>;
+typedef EqualableApi<T>         = stx.assert.Equalable.EqualableApi<T>;
+typedef Equalable<T>            = stx.assert.Equalable<T>;
 
-typedef EqualedSum              = stx.assert.pack.Equaled.EqualedSum;
-typedef Equaled                 = stx.assert.pack.Equaled;
+typedef EqualedSum              = stx.assert.Equaled.EqualedSum;
+typedef Equaled                 = stx.assert.Equaled;
 
-typedef OrdApi<T>               = stx.assert.pack.Ord.OrdApi<T>;
-typedef Ord<T>                  = stx.assert.pack.Ord<T>;
+typedef OrdApi<T>               = stx.assert.Ord.OrdApi<T>;
+typedef Ord<T>                  = stx.assert.Ord<T>;
 
-typedef OrderableApi<T>         = stx.assert.pack.Orderable.OrderableApi<T>;
-typedef Orderable<T>            = stx.assert.pack.Orderable<T>;
+typedef OrderableApi<T>         = stx.assert.Orderable.OrderableApi<T>;
+typedef Orderable<T>            = stx.assert.Orderable<T>;
 
-typedef OrderedSum              = stx.assert.pack.Ordered.OrderedSum;
-typedef Ordered                 = stx.assert.pack.Ordered;
+typedef OrderedSum              = stx.assert.Ordered.OrderedSum;
+typedef Ordered                 = stx.assert.Ordered;
 
-typedef PredicateApi<T,E>       = stx.assert.pack.Predicate.PredicateApi<T,E>;
-typedef Predicate<T,E>          = stx.assert.pack.Predicate<T,E>;
+typedef PredicateApi<T,E>       = stx.assert.Predicate.PredicateApi<T,E>;
+typedef Predicate<T,E>          = stx.assert.Predicate<T,E>;
 
-typedef AssertError             = stx.assert.pack.AssertError;
+typedef AssertError             = stx.assert.AssertError;
 
-typedef Comparative             = stx.assert.pack.Comparative;
-typedef ComparativeSum          = stx.assert.pack.Comparative.ComparativeSum;
+typedef Comparative             = stx.assert.Comparative;
+typedef ComparativeSum          = stx.assert.Comparative.ComparativeSum;
 
-typedef Compare<T>              = stx.assert.pack.Compare<T>;
+typedef Compare<T>              = stx.assert.Compare<T>;
 
 class Assert{
 

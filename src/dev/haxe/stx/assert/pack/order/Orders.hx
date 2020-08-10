@@ -1,4 +1,4 @@
-package stx.assert.pack;
+package stx.assert;
 
 import stx.compare.Errors;
 
