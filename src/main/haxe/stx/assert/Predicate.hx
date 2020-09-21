@@ -12,8 +12,15 @@ interface PredicateApi<P,E>{
 
   public function new(v:PredicateApi<T,E>) this = v;
 
+  
   @:noUsing static public function Natural<T>(method:T->Bool,?pos:Pos):Predicate<T,AssertFailure>{
     return new Natural(method,pos);
+  }
+  @:noUsing static public function NaturalReport<T,E>(method:T->Bool,e:E,?pos:Pos):Predicate<T,E>{
+    return new NaturalReport(method,e,pos);
+  }
+  @:noUsing static public function Anon<T,E>(method:T->Report<E>):Predicate<T,E>{
+    return new stx.assert.predicate.term.Anon(method);
   }
   @:noUsing static public function unit<T,E>():Predicate<T,E> return new Always();
   @:noUsing static public function always<T>(?pos:Pos):Predicate<T,AssertFailure>{
@@ -38,6 +45,7 @@ interface PredicateApi<P,E>{
     return new Matches(pos,reg,opt);
   }  
   //TODO this is wrong, surely.
+  //Nope, defined is fail
   public inline function ordef(l:T,r:T):T{
     return this.applyI(l).is_defined() ? r : l;
   }
