@@ -50,4 +50,7 @@ interface EqApi<T>{
   @:noUsing static public function Primitive():Eq<stx.nano.Primitive>{
     return new Primitive();
   }
+  @:noUsing static public function Option<T>(inner:Eq<T>):Eq<Option<T>>{
+    return new stx.assert.eq.term.Option(inner);
+  }
 }

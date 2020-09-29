@@ -47,4 +47,7 @@ interface OrdApi<T>{
   @:noUsing static public function Array<T>(inner:Ord<T>):Ord<StdArray<T>>{
     return new Array(inner);
   }
+  @:noUsing static public function Option<T>(inner:Ord<T>):Ord<StdOption<T>>{
+    return new stx.assert.ord.term.Option(inner);
+  }
 }

@@ -26,4 +26,7 @@ interface ComparableApi<P> extends EqualableApi<P> extends OrderableApi<P>{
   @:noUsing static public function Primitive():Comparable<stx.nano.Primitive>{
     return new Primitive();
   }
+  @:noUsing static public function Anon<T>(eq:Eq<T>,lt:Ord<T>):Comparable<T>{
+    return new stx.assert.comparable.term.Anon(eq,lt);
+  }
 }
