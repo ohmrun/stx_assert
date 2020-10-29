@@ -27,9 +27,9 @@ interface PredicateApi<P,E>{
     return new Always();
   }
   @:noUsing static public function never<T,E>(?pos:Pos):Predicate<T,E>{
-    return new Never(pos);
+    return new stx.assert.predicate.term.Never(pos);
   }
-  @:noUsing static public inline function iz<A>(?pos:Pos,clazz:Class<A>):Predicate<A,AssertFailure>{
+  @:noUsing static public inline function iz(?pos:Pos,clazz:Class<Dynamic>):Predicate<Dynamic,AssertFailure>{
     return new Is(clazz,pos);
   }
   @:noUsing static public inline function throws<E>(?pos:Pos):Predicate<Block,AssertFailure>{
