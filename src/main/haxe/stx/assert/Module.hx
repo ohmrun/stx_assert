@@ -20,4 +20,11 @@ class Module extends Clazz{
   public function void<T>():Predicate<T,AssertFailure>                                        return Predicate.void(pos);
   public function exists<T>():Predicate<T,AssertFailure>                                      return Predicate.exists(pos);
   public function matches<E>(reg:String,opt:String):Predicate<String,AssertFailure>           return Predicate.matches(pos,reg,opt);
+
+  public inline function ands<T,E>(self: Predicate<T,E>,rest: Iterable<Predicate<T,E>>): Predicate<T,E> return Predicate._.ands(self,rest);
+  public inline function ors<T,E>(self: Predicate<T,E>,rest: Iterable<Predicate<T,E>>): Predicate<T,E > return Predicate._.ors(self,rest);
+  public inline function and<T,E>(self: Predicate<T,E>,that: Predicate<T,E>): Predicate<T,E>            return Predicate._.and(self,that);
+  public inline function or<T,E>(self: Predicate<T,E>,that: Predicate<T,E>): Predicate<T,E>             return Predicate._.or(self,that);
+  public inline function xor<T,E>(self: Predicate<T,E>, that: Predicate<T,E>): Predicate<T,E>           return Predicate._.xor(self,that);
+  public inline function not<T,E>(self: Predicate<T,E>):Predicate<T,E>                                  return Predicate._.not(self);
 }

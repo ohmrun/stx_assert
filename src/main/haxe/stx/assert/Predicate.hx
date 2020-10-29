@@ -23,6 +23,8 @@ interface PredicateApi<P,E>{
     return new stx.assert.predicate.term.Anon(method);
   }
   @:noUsing static public function unit<T,E>():Predicate<T,E> return new Always();
+
+
   @:noUsing static public function always<T>(?pos:Pos):Predicate<T,AssertFailure>{
     return new Always();
   }
@@ -72,6 +74,7 @@ interface PredicateApi<P,E>{
   }
 }
 class PredicateLift{
+
   /**
    * Produces a predicate that succeeds if all input predicates succeed.
   **/
