@@ -45,9 +45,7 @@ interface PredicateApi<P,E>{
   }
   @:noUsing static public inline function matches<E>(?pos:Pos,reg:String,opt:String):Predicate<String,AssertFailure>{
     return new Matches(pos,reg,opt);
-  }  
-  //TODO this is wrong, surely.
-  //Nope, defined is fail
+  }
   public inline function ordef(l:T,r:T):T{
     return this.applyI(l).is_defined() ? r : l;
   }

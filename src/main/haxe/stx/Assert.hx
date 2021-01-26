@@ -38,9 +38,6 @@ typedef ComparativeSum          = stx.assert.Comparative.ComparativeSum;
 
 typedef Compare<T>              = stx.assert.Compare<T>;
 
-class Assert{
-
-}
 class LiftAssert{
   static public inline function that<T,E>(stx:Wildcard,?pos:Pos){
     return new stx.assert.Module(pos);
