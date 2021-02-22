@@ -120,4 +120,7 @@ class PredicateLift{
   static public function errata<T,E,EE>(self: Predicate<T,E>,fn:Err<E>->Err<EE>):Predicate<T,EE>{
     return new Transform(self,fn);
   }
+  static public function errate<T,E,EE>(self:Predicate<T,E>,fn:E->EE):Predicate<T,EE>{
+    return errata(self,(err) -> err.map(fn));
+  }
 }
