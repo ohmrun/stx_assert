@@ -43,4 +43,10 @@ interface AssertionApi<P,E>{
   @:noUsing static public inline function lt_eq<T>(?pos:Pos):Assertion<T,AssertFailure>{
     return new LessThanOrEquals(pos);
   }
+  @:noUsing static public function Anon<P,E>(fn:P->P->Report<E>):Assertion<P,E>{
+    return new Anon(fn);
+  }
+  @:noUsing static public function Errata<P,E,EE>(self:Assertion<P,E>,fn:Err<E>->Err<EE>):Assertion<P,EE>{
+    return new Errata(self.asAssertionApi(),fn);
+  }
 }
