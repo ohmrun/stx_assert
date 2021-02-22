@@ -123,4 +123,9 @@ class PredicateLift{
   static public function errate<T,E,EE>(self:Predicate<T,E>,fn:E->EE):Predicate<T,EE>{
     return errata(self,(err) -> err.map(fn));
   }
+  static public function map_i<T,Ti,E>(self:Predicate<T,E>,fn:Ti->T):Predicate<Ti,E>{
+    return Predicate.Anon(
+      (v:Ti) -> self.applyI(fn(v)) 
+    );
+  }
 }
