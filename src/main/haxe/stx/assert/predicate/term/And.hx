@@ -11,7 +11,7 @@ class And<T,E> extends Open<T,E>{
   }
   override public function applyI(v:T):Report<E>{
     var lr = l.applyI(v);
-    var rr = new Report(None);
+    var rr = Report.unit();
 
     if(!lr.is_defined()){
        rr = r.applyI(v);

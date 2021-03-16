@@ -50,10 +50,10 @@ interface PredicateApi<P,E>{
     return this.applyI(l).is_defined() ? r : l;
   }
   public inline function fudge(v:T):T{
-    return switch(this.applyI(v).prj()){
-      case Some(v)  : throw v;
-      case None     : v;
-    }
+    return this.applyI(v).fold(
+      (x) -> throw x,
+      () -> v
+    );
   }
   public inline function ok():T->Bool{
     return this.applyI.fn().then( report -> report.ok());
@@ -65,10 +65,10 @@ interface PredicateApi<P,E>{
     return (x) -> this.applyI(x) == None;
   }
   inline public function crunch(v:T){
-    switch(this.applyI(v).prj()){
-      case Some(e) : throw e;
-      default:
-    }
+    this.applyI(v).fold(
+      __.crack,
+      () -> {}
+    );
   }
 }
 class PredicateLift{
