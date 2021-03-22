@@ -6,6 +6,6 @@ class Void<T> extends Base<T>{
     super(pos);
   }
   override public function applyI(v:T){
-    return (v == null).report(error());
+    return (v == null).expect(error());
   }
 }

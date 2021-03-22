@@ -10,6 +10,6 @@ class Is extends Base<Dynamic>{
   override public function applyI(v:Dynamic){
     var bool  = std.Std.isOfType(v,type);
     var err   = __.fault().of(PredicateFailed(definition(),v));
-    return bool.report(err);
+    return bool.expect(err);
   }
 }

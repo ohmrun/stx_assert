@@ -8,6 +8,6 @@ class GreaterThanOrEquals<T> extends Base<T>{
     var l : Dynamic = a;
     var r : Dynamic = b;
 
-    return (l >= r).report(error());
+    return (l >= r).expect(error());
   }
 }

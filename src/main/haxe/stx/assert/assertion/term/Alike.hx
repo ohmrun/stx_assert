@@ -5,6 +5,6 @@ class Alike extends Base<StdEnumValue>{
     super(pos);
   }
   override public function applyII(a:StdEnumValue,b:StdEnumValue){
-    return (StdType.enumIndex(a) == StdType.enumIndex(b)).report(error());
+    return (StdType.enumIndex(a) == StdType.enumIndex(b)).expect(error());
   }
 }

@@ -6,6 +6,6 @@ class Exists<T> extends Base<T>{
   }
   override public function applyI(v:T){
     var bool = __.option(v).map(_ -> true).defv(false);
-    return bool.report(this.error());
+    return bool.expect(this.error());
   }
 }

@@ -6,6 +6,6 @@ class Equals<T> extends Base<T>{
   }
 
   override public function applyII(a:T,b:T){
-    return (a == b).report(error());
+    return (a == b).expect(error());
   }
 }

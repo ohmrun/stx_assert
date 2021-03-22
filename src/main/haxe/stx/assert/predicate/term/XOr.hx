@@ -13,6 +13,6 @@ class XOr<T,E> extends Open<T,E>{
     var lr = l.applyI(v);
     var rr = r.applyI(v);
 
-    return (!lr.is_defined() && !rr.is_defined()).report(error());
+    return (!lr.is_defined() && !rr.is_defined()).expect(error());
   }
 }

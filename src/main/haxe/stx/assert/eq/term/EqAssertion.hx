@@ -8,6 +8,6 @@ class EqAssertion<T> extends stx.assert.assertion.term.Base<T>{
     this.eq     = eq;
   }
   override public function applyII(a:T,b:T):Report<AssertFailure>{
-    return eq.applyII(a,b).toBool().report(__.fault(pos).of(PredicateFailed(definition(),a,b)));
+    return eq.applyII(a,b).toBool().expect(__.fault(pos).of(PredicateFailed(definition(),a,b)));
   }
 }

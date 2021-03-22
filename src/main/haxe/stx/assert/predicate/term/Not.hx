@@ -12,6 +12,6 @@ class Not<T,E> extends Open<T,E>{
       (c) -> true,
       () -> false
     );
-    return bool.report(error());
+    return bool.expect(error());
   }
 }

@@ -44,7 +44,7 @@ class LiftAssert{
   }
   static public function assert(__:Wildcard,?pos:Pos) return new stx.assert.module.Crunch(pos);
 
-  static public function report<E>(b:Bool,err:Err<E>){
+  static public function expect<E>(b:Bool,err:Err<E>){
     return b ? Report.unit() : Report.pure(err);
   }
 }

@@ -18,6 +18,6 @@ class Matches<E> extends Base<String>{
         ereg.match(v);
     var bool  = ereg.matched(0) == null;
     
-    return bool.report(err);
+    return bool.expect(err);
   }
 }
