@@ -7,6 +7,6 @@ class Natural<T> extends Base<T>{
     super(pos);
   }
   override public function applyI(v:T):Report<AssertFailure>{
-    return method(v) ? Report.unit() : error();
+    return method(v) ? Report.unit() : Report.pure(error());
   }
 }

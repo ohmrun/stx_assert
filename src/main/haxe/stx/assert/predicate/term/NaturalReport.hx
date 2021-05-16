@@ -12,7 +12,7 @@ class NaturalReport<P,E> implements PredicateApi<P,E>{
   public function applyI(p:P):Report<E>{
     return delegate(p).if_else(
       Report.unit,
-      ()->__.fault(pos).of(report)
+      ()-> __.fault(pos).of(report).report()
     );
   }
 }
