@@ -1,20 +1,20 @@
 package stx.assert.test;
 
-class ComparablesTest extends utest.Test{
+class ComparablesTest extends TestCase{
   var log : Log = __.log();
 
   public function testStringEq(){
     var a = Eq.String();
-    var b = a.applyII("a","a");
-        b.equals(true);
-    var c = a.applyII("a","b");
-        c.equals(false);
+    var b = a.comply("a","a").ok();
+    equals(true,b);
+    var c = a.comply("a","b").ok();
+    equals(false,c);
   }
   public function testStringOrd(){
   var a = Ord.String();
-    var b = a.applyII("a","a");
-        false.equals(b);
-    var c = a.applyII("a","b");
-        true.equals(c);
+    var b = a.comply("a","a").ok();
+    equals(false,b);
+    var c = a.comply("a","b").ok();
+    equals(true,c);
   }
 }

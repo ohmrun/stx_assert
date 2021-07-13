@@ -6,7 +6,7 @@ class Base<T> implements PredicateApi<T,AssertFailure> extends Clazz{
     super();
     this.pos = pos;
   }
-  public function applyI(v:T):Report<AssertFailure>{
+  public function apply(v:T):Report<AssertFailure>{
     return None;
   }
   public function error(?l,?r){

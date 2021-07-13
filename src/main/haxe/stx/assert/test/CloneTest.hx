@@ -86,16 +86,16 @@ class TestClone{
     }
     var t = new TwoLevelTop();
     var arr = [1,2,3,4];
-    //var c = stx.macro.CloneHelpers.applyI(a);
+    //var c = stx.macro.CloneHelpers.apply(a);
     /*
-    var c = stx.macro.CloneHelpers.applyIaar;
+    var c = stx.macro.CloneHelpers.applyaar;
     var d = c(a);
     a.anon.string_in_anon = "hello";
     trace(a);
     trace(d);
     */
     //var f = { a : 2 };
-    //var fn = stx.macro.CloneHelpers.applyI(a);
+    //var fn = stx.macro.CloneHelpers.apply(a);
     //stx.macro.CloneHelpers.getRecursions(a);
     /*var address : Address   = Next(Head,Next(Next(Named("test"),Unique),Named("last")));
     var name : String       = address.makeString();

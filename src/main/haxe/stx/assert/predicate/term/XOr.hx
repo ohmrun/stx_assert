@@ -9,9 +9,9 @@ class XOr<T,E> extends Open<T,E>{
     this.l = l;
     this.r = r;
   }
-  override public function applyI(v:T):Report<E>{
-    var lr = l.applyI(v);
-    var rr = r.applyI(v);
+  override public function apply(v:T):Report<E>{
+    var lr = l.apply(v);
+    var rr = r.apply(v);
 
     return (!lr.is_defined() && !rr.is_defined()).expect(error());
   }

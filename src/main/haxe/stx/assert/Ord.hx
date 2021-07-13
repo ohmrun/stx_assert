@@ -10,7 +10,7 @@ import stx.assert.ord.term.Anon;
 import stx.assert.ord.term.Primitive;
 
 interface OrdApi<T>{
-  public function applyII(lhs:T,rhs:T):Ordered;
+  public function comply(lhs:T,rhs:T):Ordered;
 }
 
 

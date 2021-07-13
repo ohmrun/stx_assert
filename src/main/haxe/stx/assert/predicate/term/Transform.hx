@@ -8,7 +8,7 @@ class Transform<T,E,EE> extends Open<T,EE>{
     this.transform = transform;
     this.delegate  = delegate; 
   }
-  override public function applyI(v:T):Report<EE>{
-    return delegate.applyI(v).errata(transform);
+  override public function apply(v:T):Report<EE>{
+    return delegate.apply(v).errata(transform);
   }
 }

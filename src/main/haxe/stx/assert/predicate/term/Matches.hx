@@ -12,7 +12,7 @@ class Matches<E> extends Base<String>{
     this.match  = match;
     this.opt    = opt;
   }
-  override public function applyI(v:String):Report<AssertFailure>{
+  override public function apply(v:String):Report<AssertFailure>{
     var err   = error('~/${match}/${opt}' ,v);
     var ereg  = new EReg(match,opt);
         ereg.match(v);

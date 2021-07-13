@@ -6,12 +6,12 @@ class Crunch extends Clazz{
     super();
     this.module = new Module(pos);
   }
-  public function equals<T>(lhs:T,rhs:T)                              this.module.equals().crunchII(lhs,rhs);
-  public function alike<E:StdEnumValue>(lhs:E,rhs:E)                  this.module.alike().crunchII(lhs,rhs);
-  public function gt<T>(lhs:T,rhs:T)                                  this.module.gt().crunchII(lhs,rhs);
-  public function gt_eq<T>(lhs:T,rhs:T)                               this.module.gt_eq().crunchII(lhs,rhs);
-  public function lt<T>(lhs:T,rhs:T)                                  this.module.lt().crunchII(lhs,rhs);
-  public function lt_eq<T>(lhs:T,rhs:T)                               this.module.lt_eq().crunchII(lhs,rhs);
+  public function equals<T>(lhs:T,rhs:T)                              this.module.equals().comply(lhs,rhs).crunch();
+  public function alike<E:StdEnumValue>(lhs:E,rhs:E)                  this.module.alike().comply(lhs,rhs).crunch();
+  public function gt<T>(lhs:T,rhs:T)                                  this.module.gt().comply(lhs,rhs).crunch();
+  public function gt_eq<T>(lhs:T,rhs:T)                               this.module.gt_eq().comply(lhs,rhs).crunch();
+  public function lt<T>(lhs:T,rhs:T)                                  this.module.lt().comply(lhs,rhs).crunch();
+  public function lt_eq<T>(lhs:T,rhs:T)                               this.module.lt_eq().comply(lhs,rhs).crunch();
 
   public function always<T>(t:T)                                      this.module.always().crunch(t);
   public function never<T,E>(t:T)                                     this.module.never().crunch(t);

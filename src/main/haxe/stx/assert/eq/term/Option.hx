@@ -5,9 +5,9 @@ class Option<T> implements EqApi<StdOption<T>>{
   public function new(eq){
     this.eq = eq;
   }
-  public function applyII(a:StdOption<T>,b:StdOption<T>):Equaled{
+  public function comply(a:StdOption<T>,b:StdOption<T>):Equaled{
     return switch([a,b]){
-      case [Some(l),Some(r)]          : eq.applyII(l,r);
+      case [Some(l),Some(r)]          : eq.comply(l,r);
       default                         : false;
     }
   }

@@ -6,7 +6,7 @@ class Base<T> implements AssertionApi<T,AssertFailure> extends Clazz{
     super();
     this.pos = pos;
   }
-  public function applyII(a:T,b:T){
+  public function comply(a:T,b:T){
     return Report.unit();
   }
   public function error(?l,?r,?pos:Pos){

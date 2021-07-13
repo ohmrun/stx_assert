@@ -1,12 +1,12 @@
 package stx.assert.eq.term;
 
 class Object implements EqApi<Any> extends Clazz{
-  public function applyII(a:Any,b:Any):Equaled{
+  public function comply(a:Any,b:Any):Equaled{
     var o = AreEqual;
 
     for(key in Reflect.fields(a)) {
       var va = Reflect.field(a, key);
-      if(!Equal.getEqualFor(va).applyII(va, Reflect.field(b, key)).ok()){
+      if(!Equal.getEqualFor(va).comply(va, Reflect.field(b, key)).ok()){
         o = NotEqual;
         break;
       }

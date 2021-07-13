@@ -8,7 +8,7 @@ class Open<T,E> implements PredicateApi<T,E>{
   public function new(?pos){
     this.pos = pos;
   }
-  public function applyI(v:T):Report<E>{
+  public function apply(v:T):Report<E>{
     return Report.unit();
   }
   public function error():Err<E>{

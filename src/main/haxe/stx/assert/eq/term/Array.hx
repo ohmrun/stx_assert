@@ -6,7 +6,7 @@ class Array<V> implements EqApi<StdArray<V>>{
   public function new(inner){
     this.inner = inner;
   }
-  public function applyII(a:StdArray<V>,b:StdArray<V>):Equaled{
+  public function comply(a:StdArray<V>,b:StdArray<V>):Equaled{
 
     var ok = AreEqual;
 
@@ -17,7 +17,7 @@ class Array<V> implements EqApi<StdArray<V>>{
     for(i in 0...a.length-1){
       var lhs = a[i];
       var rhs = b[i];
-      ok = inner.applyII(lhs,rhs);
+      ok = inner.comply(lhs,rhs);
       if(!ok.ok()){break;}
     }
     return ok;

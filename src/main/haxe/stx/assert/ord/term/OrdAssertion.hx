@@ -6,7 +6,7 @@ class OrdAssertion<T> extends stx.assert.assertion.term.Base<T>{
     super(pos);
     this.ord = ord;
   }
-  override public function applyII(a:T,b:T):Report<AssertFailure>{
-    return ord.applyII(a,b).toBool().expect(__.fault(pos).of(PredicateFailed(definition(),a,b)));
+  override public function comply(a:T,b:T):Report<AssertFailure>{
+    return ord.comply(a,b).toBool().expect(__.fault(pos).of(PredicateFailed(definition(),a,b)));
   }
 }

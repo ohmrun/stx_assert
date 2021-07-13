@@ -8,7 +8,7 @@ class Array<T> implements OrdApi<StdArray<T>> {
   public function new(inner){
     this.inner = inner;
   }
-  public function applyII(v1: StdArray<T>, v2: StdArray<T>):Ordered {
+  public function comply(v1: StdArray<T>, v2: StdArray<T>):Ordered {
     var n = v1.length - v2.length;
     return if(n != 0){
       n > 0 ? NotLessThan : LessThan;
@@ -17,7 +17,7 @@ class Array<T> implements OrdApi<StdArray<T>> {
     }else{
       var v = NotLessThan;
       for (i in 0...v1.length) {
-        v = inner.applyII(v1[i], v2[i]);
+        v = inner.comply(v1[i], v2[i]);
         if(v == LessThan){
           break;
         }

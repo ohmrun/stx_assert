@@ -7,8 +7,8 @@ class Not<T,E> extends Open<T,E>{
     super(pos);
     this.predicate = predicate;
   }
-  override public function applyI(v:T){
-    var bool = predicate.applyI(v).fold(
+  override public function apply(v:T){
+    var bool = predicate.apply(v).fold(
       (c) -> true,
       () -> false
     );

@@ -6,7 +6,7 @@ class Natural<T> extends Base<T>{
     this.method = method;
     super(pos);
   }
-  override public function applyI(v:T):Report<AssertFailure>{
+  override public function apply(v:T):Report<AssertFailure>{
     return method(v) ? Report.unit() : Report.pure(error());
   }
 }

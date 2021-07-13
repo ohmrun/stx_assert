@@ -10,7 +10,7 @@ class Map<K,V> implements OrdApi<StdMap<K,V>>{
     this.key = key;
     this.val = val;
   }
-  public function applyII(lhs:StdMap<K,V>,rhs:StdMap<K,V>):Ordered{
+  public function comply(lhs:StdMap<K,V>,rhs:StdMap<K,V>):Ordered{
     var ret     = NotLessThan;
     var l_keys  = lhs.keyValueIterator().toIter().toArray();
     var r_keys  = rhs.keyValueIterator().toIter().toArray();
@@ -18,12 +18,12 @@ class Map<K,V> implements OrdApi<StdMap<K,V>>{
     return if(c != 0){
       c > 0 ? NotLessThan : LessThan;
     }else{
-      ret = Ord.Array(key).applyII(l_keys,r_keys);
+      ret = Ord.Array(key).comply(l_keys,r_keys);
       if(ret == LessThan){
         LessThan;
       }else{
         for(k in l_keys){
-          ret = val.applyII(lhs.get(k),rhs.get(k));
+          ret = val.comply(lhs.get(k),rhs.get(k));
           if(ret == LessThan){
             break;
           }

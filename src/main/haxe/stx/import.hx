@@ -12,6 +12,7 @@ using stx.Pico;
 using stx.Nano;
 using stx.Fn;
 using stx.Assert;
+using stx.Test;
 
 using tink.CoreApi;
 

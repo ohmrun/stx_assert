@@ -11,8 +11,8 @@ class Errata<T,E,EE> implements AssertionApi<T,EE> {
     this.errata   = errata;
     this.pos      = pos;
   }
-  public function applyII(lhs:T,rhs:T):Report<EE>{
-    return delegate.applyII(lhs,rhs).errata(errata);
+  public function comply(lhs:T,rhs:T):Report<EE>{
+    return delegate.comply(lhs,rhs).errata(errata);
   }
   public function asAssertionApi():AssertionApi<T,EE>{
     return this;

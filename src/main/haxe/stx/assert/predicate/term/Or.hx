@@ -9,9 +9,9 @@ class Or<T,E> extends Open<T,E>{
     this.l = l;
     this.r = r;
   }
-  override public function applyI(v:T):Report<E>{
-    var resI  = l.applyI(v);
-    var resII = r.applyI(v);
+  override public function apply(v:T):Report<E>{
+    var resI  = l.apply(v);
+    var resII = r.apply(v);
     return if(resI.is_defined() && resII.is_defined()){
       resI.merge(resII);
     }else{

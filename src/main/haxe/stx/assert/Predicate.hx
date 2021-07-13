@@ -3,7 +3,7 @@ package stx.assert;
 import stx.assert.predicate.term.*;
 
 interface PredicateApi<P,E>{
-  public function applyI(p:P):Report<E>;
+  public function apply(p:P):Report<E>;
 }
 
 @:using(stx.assert.Predicate.PredicateLift)
@@ -47,25 +47,22 @@ interface PredicateApi<P,E>{
     return new Matches(pos,reg,opt);
   }
   public inline function ordef(l:T,r:T):T{
-    return this.applyI(l).is_defined() ? r : l;
+    return this.apply(l).is_defined() ? r : l;
   }
   public inline function fudge(v:T):T{
-    return this.applyI(v).fold(
+    return this.apply(v).fold(
       (x) -> throw x,
       () -> v
     );
   }
-  public inline function ok():T->Bool{
-    return this.applyI.fn().then( report -> report.ok());
-  }
   public inline function bindI(v){
-    return this.applyI.bind(v);
+    return this.apply.bind(v);
   }
   public function check():T->Bool{
-    return (x) -> this.applyI(x) == None;
+    return (x) -> this.apply(x) == None;
   }
   inline public function crunch(v:T){
-    this.applyI(v).fold(
+    this.apply(v).fold(
       __.crack,
       () -> {}
     );
@@ -125,7 +122,7 @@ class PredicateLift{
   }
   static public function map_i<T,Ti,E>(self:Predicate<T,E>,fn:Ti->T):Predicate<Ti,E>{
     return Predicate.Anon(
-      (v:Ti) -> self.applyI(fn(v)) 
+      (v:Ti) -> self.apply(fn(v)) 
     );
   }
 }

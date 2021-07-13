@@ -3,20 +3,11 @@ package stx.assert;
 import stx.assert.assertion.term.*;
 
 interface AssertionApi<P,E>{
-  public function applyII(lhs:P,rhs:P):Report<E>;
+  public function comply(lhs:P,rhs:P):Report<E>;
   public function asAssertionApi():AssertionApi<P,E>;
 }
 
 @:forward abstract Assertion<T,E>(AssertionApi<T,E>) from AssertionApi<T,E>{
-  public function crunchII(l:T,r:T){
-    this.applyII(l,r).fold(
-      __.crack,
-      () -> {}
-    );
-  }
-  public function ok(l:T,r:T):Bool{
-    return !this.applyII(l,r).is_defined();
-  }
   /**
    * Creates a Predicate from an Assertion.
    * @param l 

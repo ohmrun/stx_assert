@@ -5,7 +5,7 @@ class Deferred<T> implements EqApi<T>{
 
   public function new(){};
 
-  public function applyII(a:T,b:T){
+  public function comply(a:T,b:T){
     if(eq == null){
       if(a == null){
         eq = Equal.getEqualFor(a);
@@ -13,6 +13,6 @@ class Deferred<T> implements EqApi<T>{
         eq = Equal.getEqualFor(b);
       }
     }
-    return eq.applyII(a,b);
+    return eq.comply(a,b);
   }
 }

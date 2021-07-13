@@ -5,7 +5,7 @@ class Anon<T> implements OrdApi<T>{
   public function new(delegate){
     this.delegate = delegate;
   }
-  public function applyII(lhs:T,rhs:T):Ordered{
+  public function comply(lhs:T,rhs:T):Ordered{
     return delegate(lhs,rhs);
   }
 }

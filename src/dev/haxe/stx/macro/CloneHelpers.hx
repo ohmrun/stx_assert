@@ -30,7 +30,7 @@ class Item{
 #end
 class CloneHelpers{
   static var printer = new Printer();
-  static public macro function applyI(e:Expr):Expr{
+  static public macro function apply(e:Expr):Expr{
     //var b = haxe.Timer.stamp();
     var d = 0;
     var type              = Context.typeof(e);

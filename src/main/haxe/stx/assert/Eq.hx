@@ -9,7 +9,7 @@ import stx.assert.eq.term.Int;
 import stx.assert.eq.term.String;
 
 interface EqApi<T>{
-  public function applyII(lhs:T,rhs:T):Equaled;
+  public function comply(lhs:T,rhs:T):Equaled;
 }
 
 @:forward abstract Eq<T>(EqApi<T>) from EqApi<T> to EqApi<T>{

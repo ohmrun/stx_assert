@@ -5,12 +5,12 @@ class NotNull<T> implements EqApi<T>{
   public function new(eq){
     this.eq = eq;
   }
-  public function applyII(a:T,b:T){
+  public function comply(a:T,b:T){
     return switch([a,b]){
       case [null,null]        : AreEqual;
       case [null,_]           : NotEqual;
       case [_,null]           : NotEqual;
-      default                 : eq.applyII(a,b);
+      default                 : eq.comply(a,b);
     }
   }
 }

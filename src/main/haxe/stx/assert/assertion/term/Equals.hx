@@ -5,7 +5,7 @@ class Equals<T> extends Base<T>{
     super(pos);
   }
 
-  override public function applyII(a:T,b:T){
+  override public function comply(a:T,b:T){
     return (a == b).expect(error());
   }
 }

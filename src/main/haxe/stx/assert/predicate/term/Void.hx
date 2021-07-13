@@ -5,7 +5,7 @@ class Void<T> extends Base<T>{
   public function new(?pos){
     super(pos);
   }
-  override public function applyI(v:T){
+  override public function apply(v:T){
     return (v == null).expect(error());
   }
 }

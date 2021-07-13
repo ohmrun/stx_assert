@@ -7,7 +7,7 @@ class Is extends Base<Dynamic>{
     super(pos);
     this.type   = type;
   }
-  override public function applyI(v:Dynamic){
+  override public function apply(v:Dynamic){
     var bool  = std.Std.isOfType(v,type);
     var err   = __.fault().of(PredicateFailed(definition(),v));
     return bool.expect(err);

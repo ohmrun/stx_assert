@@ -5,9 +5,9 @@ class Option<T> implements OrdApi<StdOption<T>>{
   public function new(inner){
     this.inner = inner;
   }
-  public function applyII(lhs:StdOption<T>,rhs:StdOption<T>):Ordered{
+  public function comply(lhs:StdOption<T>,rhs:StdOption<T>):Ordered{
     return lhs.zip(rhs).map(
-      __.decouple( (l:T,r:T) -> inner.applyII(l,r) )
+      __.decouple( (l:T,r:T) -> inner.comply(l,r) )
     ).defv(NotLessThan);
   }
 }

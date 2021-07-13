@@ -5,7 +5,7 @@ class Anon<T> implements EqApi<T>{
   public function new(self){
     this.delegate = self;
   }
-  public function applyII(lhs:T,rhs:T):Equaled{
+  public function comply(lhs:T,rhs:T):Equaled{
     return this.delegate(lhs,rhs);
   }
 }

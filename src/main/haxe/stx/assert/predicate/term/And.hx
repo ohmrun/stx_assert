@@ -9,12 +9,12 @@ class And<T,E> extends Open<T,E>{
     this.l = l;
     this.r = r;
   }
-  override public function applyI(v:T):Report<E>{
-    var lr = l.applyI(v);
+  override public function apply(v:T):Report<E>{
+    var lr = l.apply(v);
     var rr = Report.unit();
 
     if(!lr.is_defined()){
-       rr = r.applyI(v);
+       rr = r.apply(v);
     }
 
     return lr.merge(rr);

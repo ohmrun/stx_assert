@@ -106,7 +106,7 @@ import stx.macro.CloneHelpers;
 
   public function reply(){
     //trace("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    var out     = Ctxs.applyItree.toTree(),this.items);
+    var out     = Ctxs.applytree.toTree(),this.items);
     //trace(new Printer().printExpr(out));
     //return macro {};
     return out;
@@ -127,7 +127,7 @@ import stx.macro.CloneHelpers;
   }
 }
 class Ctxs{
-  static public function applyI(v:KTree<ObjectTreeNode>,items:Repo){
+  static public function apply(v:KTree<ObjectTreeNode>,items:Repo){
     function handler(tree:KTree<ObjectTreeNode>,path:Path){
       //trace('handler $path');
       //trace('${items.ids()}');

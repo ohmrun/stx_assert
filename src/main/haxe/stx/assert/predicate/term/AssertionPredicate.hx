@@ -8,8 +8,8 @@ class AssertionPredicate<T,E> implements PredicateApi<T,E>{
     this.delegate     = delegate;
     this.data         = data;
   }
-  public function applyI(v:T){
-    return this.delegate.applyII(this.data,v).errata(
+  public function apply(v:T){
+    return this.delegate.comply(this.data,v).errata(
       (x) -> (x)
     );
   }
