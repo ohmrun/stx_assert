@@ -22,7 +22,7 @@ interface PartialOrdApi<T>{
   public function comply(lhs:T,rhs:T):PartialOrdered;
 }
 interface PartialOrderableApi<T>{
-  public function lt():PartialOrd<T>;
+  public function lt():PartialOrdApi<T>;
 }
 interface PartialComparableApi<T> extends EqualableApi<T> extends PartialOrderableApi<T>{
 
