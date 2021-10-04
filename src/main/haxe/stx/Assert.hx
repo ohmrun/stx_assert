@@ -58,3 +58,9 @@ class LiftErr{
   //   ).defv(false);
   // }
 }
+
+typedef PartialOrderedDef             = stx.assert.PartialOrder.PartialOrderedDef;
+typedef PartialOrdered                = stx.assert.PartialOrder.PartialOrdered;
+typedef PartialOrdApi<T>              = stx.assert.PartialOrder.PartialOrdApi<T>;
+typedef PartialOrderableApi<T>        = stx.assert.PartialOrder.PartialOrderableApi<T>;
+typedef PartialComparableApi<T>       = stx.assert.PartialOrder.PartialComparableApi<T>;
