@@ -1,7 +1,7 @@
 package stx.assert.predicate.term;
 
 class Transform<T,E,EE> extends Open<T,EE>{
-  var transform : Err<E> -> Err<EE>;
+  var transform : Exception<E> -> Exception<EE>;
   var delegate  : Predicate<T,E>;
   public function new(delegate,transform,?pos){
     super(pos);

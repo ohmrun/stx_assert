@@ -31,7 +31,7 @@ typedef Ordered                 = stx.assert.Ordered;
 typedef PredicateApi<T,E>       = stx.assert.Predicate.PredicateApi<T,E>;
 typedef Predicate<T,E>          = stx.assert.Predicate<T,E>;
 
-typedef AssertError             = stx.assert.AssertError;
+//typedef AssertError             = stx.assert.AssertError;
 
 typedef Comparative             = stx.assert.Comparative;
 typedef ComparativeSum          = stx.assert.Comparative.ComparativeSum;
@@ -44,19 +44,9 @@ class LiftAssert{
   }
   static public function assert(__:Wildcard,?pos:Pos) return new stx.assert.module.Crunch(pos);
 
-  static public function expect<E>(b:Bool,err:Err<E>){
+  static public function expect<E>(b:Bool,err:Exception<E>){
     return b ? Report.unit() : Report.pure(err);
   }
-}
-class LiftErr{
-  // static public function alike<E>(err:Err<E>,e0:E):Bool{
-  //   return err.data.map(
-  //     (stx) -> switch(stx){
-  //       case ERR(e1)  : __.that().alike().ok(e0,e1);
-  //       default       : false;
-  //     }
-  //   ).defv(false);
-  // }
 }
 
 typedef PartialOrderedDef             = stx.assert.PartialOrder.PartialOrderedDef;
