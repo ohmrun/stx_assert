@@ -11,7 +11,7 @@ class Open<T,E> implements PredicateApi<T,E>{
   public function apply(v:T):Report<E>{
     return Report.unit();
   }
-  public function error():Exception<E>{
+  public function error():Rejection<E>{
     return __.fault(pos).internal(E_Undefined);
   }
 }

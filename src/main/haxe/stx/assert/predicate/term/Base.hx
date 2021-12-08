@@ -9,7 +9,7 @@ class Base<T> implements PredicateApi<T,AssertFailure> extends Clazz{
   public function apply(v:T):Report<AssertFailure>{
     return None;
   }
-  public function error(?l,?r){
+  public function error(?l:T,?r:T){
     return __.fault(this.pos).of(PredicateFailed(this.definition(),l,r));
   }
 }

@@ -37,7 +37,7 @@ interface AssertionApi<P,E>{
   @:noUsing static public function Anon<P,E>(fn:P->P->Report<E>):Assertion<P,E>{
     return new Anon(fn);
   }
-  @:noUsing static public function Errata<P,E,EE>(self:Assertion<P,E>,fn:Exception<E>->Exception<EE>):Assertion<P,EE>{
-    return new Errata(self.asAssertionApi(),fn);
+  @:noUsing static public function Errata<P,E,EE>(self:Assertion<P,E>,fn:Rejection<E>->Rejection<EE>):Assertion<P,EE>{
+    return new stx.assert.assertion.term.Errata(self.asAssertionApi(),fn);
   }
 }
