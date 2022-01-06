@@ -29,7 +29,7 @@ class Destructure extends Clazz{
     return new Not(p);
   }
 
-  public function errata<T,E,EE>(fn:Err<E>->Err<EE>,p: Predicate<T,E>):Predicate<T,EE>{
+  public function errata<T,E,EE>(fn:Rejection<E>->Rejection<EE>,p: Predicate<T,E>):Predicate<T,EE>{
     return new Transform(p,fn);
   }
 }

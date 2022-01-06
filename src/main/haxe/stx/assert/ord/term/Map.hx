@@ -12,13 +12,13 @@ class Map<K,V> implements OrdApi<StdMap<K,V>>{
   }
   public function comply(lhs:StdMap<K,V>,rhs:StdMap<K,V>):Ordered{
     var ret     = NotLessThan;
-    var l_keys  = lhs.keyValueIterator().toIter().toArray();
-    var r_keys  = rhs.keyValueIterator().toIter().toArray();
+    var l_keys  = lhs.keys().toIter().toArray();
+    var r_keys  = rhs.keys().toIter().toArray();
     var c       = l_keys.length - r_keys.length;
     return if(c != 0){
       c > 0 ? NotLessThan : LessThan;
     }else{
-      ret = Ord.Array(key).comply(l_keys,r_keys);
+       ret = Ord.Array(key).comply(l_keys,r_keys);
       if(ret == LessThan){
         LessThan;
       }else{

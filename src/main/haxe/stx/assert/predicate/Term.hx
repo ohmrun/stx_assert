@@ -9,7 +9,7 @@ class Term extends Clazz{
     return new Always();
   }
   public function never<T,E>(?pos:Pos):Predicate<T,E>{
-    return new Never(pos);
+    return new stx.assert.predicate.term.Never(pos);
   }
   public inline function is<A>(?pos:Pos,clazz:Class<A>):Predicate<A,AssertFailure>{
     return new Is(clazz,pos);

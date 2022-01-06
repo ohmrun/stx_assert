@@ -7,7 +7,7 @@ class Anon<T,E> implements AssertionApi<T,E>{
     this.pos      = pos;
   }
   public dynamic function delegate(a:T,b:T):Report<E>{
-    return Report.pure(__.fault().external('unimplemented'));
+    return Report.pure(__.fault().explain(_ -> _.e_unimplemented()));
   } 
   public function comply(a:T,b:T){
     return delegate(a,b);
