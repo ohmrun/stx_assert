@@ -5,6 +5,7 @@ import stx.assert.ord.term.Couple;
 import stx.assert.ord.term.Array;
 import stx.assert.ord.term.String;
 import stx.assert.ord.term.Int;
+import stx.assert.ord.term.Int64;
 import stx.assert.ord.term.Float;
 import stx.assert.ord.term.Anon;
 import stx.assert.ord.term.Primitive;
@@ -23,6 +24,9 @@ interface OrdApi<T>{
   } 
   @:noUsing static public function Int():Ord<StdInt>{
     return new Int();
+  }
+  @:noUsing static public function Int64():Ord<haxe.Int64>{
+    return new Int64();
   }
   @:noUsing static public function Float():Ord<StdFloat>{
     return new Float();

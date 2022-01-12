@@ -6,6 +6,7 @@ import stx.assert.eq.term.Anon;
 import stx.assert.eq.term.*;
 import stx.assert.eq.term.Couple;
 import stx.assert.eq.term.Int;
+import stx.assert.eq.term.Int64;
 import stx.assert.eq.term.String;
 
 interface EqApi<T>{
@@ -21,6 +22,9 @@ interface EqApi<T>{
   } 
   @:noUsing static public function Int():Eq<StdInt>{
     return new Int();
+  }
+  @:noUsing static public function Int64():Eq<haxe.Int64>{
+    return new Int64();
   }
   @:noUsing static public function String():Eq<StdString>{
     return new String();

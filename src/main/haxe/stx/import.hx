@@ -2,6 +2,7 @@ package stx.assert;
 
 using Lambda;
 import Type;
+import haxe.Int64;
 
 import haxe.PosInfos;
 import haxe.ds.StringMap;
