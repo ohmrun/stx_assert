@@ -18,7 +18,7 @@ class Array<V> implements EqApi<StdArray<V>>{
       var lhs = a[i];
       var rhs = b[i];
       ok = inner.comply(lhs,rhs);
-      if(!ok.ok()){break;}
+      if(!ok.is_ok()){break;}
     }
     return ok;
   }

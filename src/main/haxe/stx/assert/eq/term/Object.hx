@@ -6,7 +6,7 @@ class Object implements EqApi<Any> extends Clazz{
 
     for(key in Reflect.fields(a)) {
       var va = Reflect.field(a, key);
-      if(!Equal.getEqualFor(va).comply(va, Reflect.field(b, key)).ok()){
+      if(!Equal.getEqualFor(va).comply(va, Reflect.field(b, key)).is_ok()){
         o = NotEqual;
         break;
       }

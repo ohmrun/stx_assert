@@ -8,6 +8,7 @@ import stx.assert.eq.term.Couple;
 import stx.assert.eq.term.Int;
 import stx.assert.eq.term.Int64;
 import stx.assert.eq.term.String;
+import stx.assert.eq.term.Cluster;
 
 interface EqApi<T>{
   public function comply(lhs:T,rhs:T):Equaled;
@@ -50,6 +51,9 @@ interface EqApi<T>{
   }
   @:noUsing static public function Array<T>(inner:Eq<T>):Eq<StdArray<T>>{
     return new Array(inner);
+  }
+  @:noUsing static public function Cluster<T>(inner:Eq<T>):Eq<stx.nano.Cluster<T>>{
+    return new Cluster(inner);
   }
   @:noUsing static public function Primitive():Eq<stx.nano.Primitive>{
     return new Primitive();

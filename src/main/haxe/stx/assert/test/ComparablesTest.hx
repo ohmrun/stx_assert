@@ -5,16 +5,16 @@ class ComparablesTest extends TestCase{
 
   public function testStringEq(){
     var a = Eq.String();
-    var b = a.comply("a","a").ok();
+    var b = a.comply("a","a").is_ok();
     equals(true,b);
-    var c = a.comply("a","b").ok();
+    var c = a.comply("a","b").is_ok();
     equals(false,c);
   }
   public function testStringOrd(){
   var a = Ord.String();
-    var b = a.comply("a","a").ok();
+    var b = a.comply("a","a").is_ok();
     equals(false,b);
-    var c = a.comply("a","b").ok();
+    var c = a.comply("a","b").is_ok();
     equals(true,c);
   }
 }

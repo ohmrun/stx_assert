@@ -9,7 +9,7 @@ class Enum implements EqApi<Dynamic> extends Clazz{
       var pb  = StdType.enumParameters(b);
       var b   = AreEqual;
       for(i in 0...pa.length) {
-        if(!Equal.getEqualFor(pa[i]).comply(a[i], pb[i]).ok()){
+        if(!Equal.getEqualFor(pa[i]).comply(a[i], pb[i]).is_ok()){
           b = NotEqual;
           break;
         }

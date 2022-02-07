@@ -4,7 +4,7 @@ enum abstract OrderedSum(Bool) from Bool{
   var LessThan    = true;
   var NotLessThan = false;
 
-  public function ok():Bool{
+  public function is_ok():Bool{
     return this;
   }
 }

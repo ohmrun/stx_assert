@@ -4,12 +4,12 @@ enum abstract EqualedSum(Bool) from Bool{
   var AreEqual = true;
   var NotEqual = false;
 
-  public function ok():Bool{
+  public function is_ok():Bool{
     return this;
   }
   @:op(A && B)
   public function and(that:Equaled):Equaled{
-    return ((this && that.ok()):Equaled);
+    return ((this && that.is_ok()):Equaled);
   }
 }
 
