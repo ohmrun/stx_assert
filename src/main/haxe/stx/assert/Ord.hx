@@ -3,6 +3,7 @@ package stx.assert;
 import stx.assert.ord.term.*;
 import stx.assert.ord.term.Couple;
 import stx.assert.ord.term.Array;
+import stx.assert.ord.term.Cluster;
 import stx.assert.ord.term.String;
 import stx.assert.ord.term.Int;
 import stx.assert.ord.term.Int64;
@@ -50,6 +51,9 @@ interface OrdApi<T>{
   }
   @:noUsing static public function Array<T>(inner:Ord<T>):Ord<StdArray<T>>{
     return new Array(inner);
+  }
+  @:noUsing static public function Cluster<T>(inner:Ord<T>):Ord<stx.Cluster<T>>{
+    return new Cluster(inner);
   }
   @:noUsing static public function Option<T>(inner:Ord<T>):Ord<StdOption<T>>{
     return new stx.assert.ord.term.Option(inner);
