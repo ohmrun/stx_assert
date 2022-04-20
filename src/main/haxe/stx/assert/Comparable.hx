@@ -29,4 +29,7 @@ interface ComparableApi<P> extends EqualableApi<P> extends OrderableApi<P>{
   @:noUsing static public function Anon<T>(eq:Eq<T>,lt:Ord<T>):Comparable<T>{
     return new stx.assert.comparable.term.Anon(eq,lt);
   }
+  @:noUsing static public function Cluster<T>(inner:Comparable<T>):Comparable<stx.Cluster<T>>{
+    return new stx.assert.comparable.term.Cluster(inner);
+  }
 }

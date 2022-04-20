@@ -17,6 +17,6 @@ class And<T,E> extends Open<T,E>{
        rr = r.apply(v);
     }
 
-    return lr.merge(rr);
+    return lr.concat(rr);
   }
 }

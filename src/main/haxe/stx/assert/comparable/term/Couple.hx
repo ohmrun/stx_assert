@@ -1,6 +1,5 @@
 package stx.assert.comparable.term;
 
-
 class Couple<L,R> implements ComparableApi<StdCouple<L,R>>{
   var l : Comparable<L>;
   var r : Comparable<R>;

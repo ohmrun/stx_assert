@@ -1,8 +1,8 @@
 package stx.assert.eq.term;
 
 class Cluster<T> implements EqApi<stx.nano.Cluster<T>>{
-  final inner : EqApi<T>;
-  public function new(inner){
+  final inner : Eq<T>;
+  public function new(inner:Eq<T>){
     this.inner = inner;
   }
   

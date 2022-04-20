@@ -13,7 +13,7 @@ class Or<T,E> extends Open<T,E>{
     var resI  = l.apply(v);
     var resII = r.apply(v);
     return if(resI.is_defined() && resII.is_defined()){
-      resI.merge(resII);
+      resI.concat(resII);
     }else{
       Report.unit();
     }

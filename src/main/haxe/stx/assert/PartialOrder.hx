@@ -8,7 +8,7 @@ typedef PartialOrderedDef = Null<Float>;
 
 abstract PartialOrdered(PartialOrderedDef) from PartialOrderedDef {
   public function new(self) this = self;
-  static public function lift(self:PartialOrderedDef):PartialOrdered return new PartialOrdered(self);
+  @:noUsing static public function lift(self:PartialOrderedDef):PartialOrdered return new PartialOrdered(self);
 
   @:noUsing static public function unorderable():PartialOrdered{
     return lift(null);

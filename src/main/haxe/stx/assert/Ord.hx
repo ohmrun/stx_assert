@@ -2,6 +2,7 @@ package stx.assert;
 
 import stx.assert.ord.term.*;
 import stx.assert.ord.term.Couple;
+import stx.assert.ord.term.EnumValue;
 import stx.assert.ord.term.Array;
 import stx.assert.ord.term.Cluster;
 import stx.assert.ord.term.String;
@@ -57,5 +58,8 @@ interface OrdApi<T>{
   }
   @:noUsing static public function Option<T>(inner:Ord<T>):Ord<StdOption<T>>{
     return new stx.assert.ord.term.Option(inner);
+  }
+  @:noUsing static public function EnumValue():Ord<StdEnumValue>{
+    return new EnumValue();
   }
 }
