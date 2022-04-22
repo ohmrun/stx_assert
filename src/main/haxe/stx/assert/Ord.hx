@@ -59,6 +59,9 @@ interface OrdApi<T>{
   @:noUsing static public function Option<T>(inner:Ord<T>):Ord<StdOption<T>>{
     return new stx.assert.ord.term.Option(inner);
   }
+  @:noUsing static public function NullOr<T>(inner:Ord<T>):Ord<Null<T>>{
+    return new stx.assert.ord.term.NullOr(inner).toOrdApi();
+  }
   @:noUsing static public function EnumValue():Ord<StdEnumValue>{
     return new EnumValue();
   }

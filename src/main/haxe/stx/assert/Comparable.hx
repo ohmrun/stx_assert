@@ -13,7 +13,7 @@ interface ComparableApi<P> extends EqualableApi<P> extends OrderableApi<P>{
 @:forward abstract Comparable<T>(ComparableApi<T>) from ComparableApi<T> to ComparableApi<T>{
 
   public function new(self) this = self;
-
+  
   @:noUsing static public function Int():Comparable<StdInt>{
     return new Int();
   }
