@@ -37,5 +37,11 @@ enum abstract OrderedSum(Bool) from Bool{
   public function and(that:Ordered):Ordered{
     return toBool() && that.toBool();
   }
+  public function is_not_less_than(){
+    return switch(this){
+      case NotLessThan : true;
+      default          : false;
+    }
+  }
 }
 

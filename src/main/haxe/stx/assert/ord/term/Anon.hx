@@ -1,6 +1,6 @@
 package stx.assert.ord.term;
 
-class Anon<T> implements OrdApi<T>{
+class Anon<T> extends OrdCls<T>{
   var delegate : T -> T -> Ordered;
   public function new(delegate){
     this.delegate = delegate;

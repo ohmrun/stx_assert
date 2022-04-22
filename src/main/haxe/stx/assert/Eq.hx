@@ -9,6 +9,8 @@ import stx.assert.eq.term.Int;
 import stx.assert.eq.term.Int64;
 import stx.assert.eq.term.String;
 import stx.assert.eq.term.Cluster;
+import stx.assert.eq.term.EnumValue;
+import stx.assert.eq.term.NullOr;
 
 interface EqApi<T>{
   public function comply(lhs:T,rhs:T):Equaled;
@@ -60,5 +62,11 @@ interface EqApi<T>{
   }
   @:noUsing static public function Option<T>(inner:Eq<T>):Eq<Option<T>>{
     return new stx.assert.eq.term.Option(inner);
+  }
+  @:noUsing static public function EnumValue():Eq<StdEnumValue>{
+    return new EnumValue();
+  }
+  @:noUsing static public function NullOr<T>(inner:Eq<T>):Eq<Null<T>>{
+    return new stx.assert.eq.term.NullOr(inner);
   }
 }

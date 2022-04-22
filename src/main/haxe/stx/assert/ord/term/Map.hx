@@ -2,7 +2,7 @@ package stx.assert.ord.term;
 
 import haxe.ds.Map in StdMap;
 
-class Map<K,V> implements OrdApi<StdMap<K,V>>{
+class Map<K,V> extends OrdCls<StdMap<K,V>>{
   var key : Ord<K>;
   var val : Ord<V>;
 

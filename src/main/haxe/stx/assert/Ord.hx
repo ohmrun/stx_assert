@@ -12,10 +12,18 @@ import stx.assert.ord.term.Float;
 import stx.assert.ord.term.Anon;
 import stx.assert.ord.term.Primitive;
 
+typedef NullT<T> = Null<T>;
+
 interface OrdApi<T>{
   public function comply(lhs:T,rhs:T):Ordered;
+  public function toOrdApi():OrdApi<T>;
 }
-
+abstract class OrdCls<T> implements OrdApi<T>{
+  abstract public function comply(lhs:T,rhs:T):Ordered;
+  public function toOrdApi():Ord<T>{
+    return this;
+  }
+}
 
 @:forward abstract Ord<T>(OrdApi<T>) from OrdApi<T> to OrdApi<T>{
   public function new(self){

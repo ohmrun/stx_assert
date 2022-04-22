@@ -1,6 +1,6 @@
 package stx.assert.ord.term;
 
-class Couple<L,R> implements OrdApi<StdCouple<L,R>>{
+class Couple<L,R> extends OrdCls<StdCouple<L,R>>{
   var l : Ord<L>;
   var r : Ord<R>;
 

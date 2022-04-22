@@ -2,7 +2,8 @@ package stx.assert.ord.term;
 
 import stx.nano.Primitive in PrimitiveT;
 
-class Primitive implements OrdApi<PrimitiveT> extends Clazz{
+class Primitive extends OrdCls<PrimitiveT>{
+  public function new(){}
   public function comply(lhs:PrimitiveT,rhs:PrimitiveT):Ordered{
     return switch([lhs,rhs]){
       case [PNull,PNull]                                                : NotLessThan;

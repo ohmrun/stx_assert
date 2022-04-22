@@ -3,7 +3,7 @@ package stx.assert.ord.term;
 /**
   shortlex oerrdah!!
 **/
-class Array<T> implements OrdApi<StdArray<T>> {
+class Array<T> extends OrdCls<StdArray<T>> {
   var inner : Ord<T>;
   public function new(inner){
     this.inner = inner;

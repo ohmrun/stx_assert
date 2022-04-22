@@ -1,6 +1,7 @@
 package stx.assert.ord.term;
 
-class EnumValue implements OrdApi<StdEnumValue> extends Clazz{
+class EnumValue extends OrdCls<StdEnumValue>{
+  public function new(){}
   public function comply(lhs:StdEnumValue,rhs:StdEnumValue){
     final l = lhs.lift();
     final r = rhs.lift();

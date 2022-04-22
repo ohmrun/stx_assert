@@ -1,6 +1,6 @@
 package stx.assert.ord.term;
 
-class Option<T> implements OrdApi<StdOption<T>>{
+class Option<T> extends OrdCls<StdOption<T>>{
   public var inner(default,null):Ord<T>;
   public function new(inner){
     this.inner = inner;

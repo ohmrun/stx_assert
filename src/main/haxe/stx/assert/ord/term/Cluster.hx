@@ -3,7 +3,7 @@ package stx.assert.ord.term;
 /**
   shortlex oerrdah!!
 **/
-class Cluster<T> implements OrdApi<stx.Cluster<T>> {
+class Cluster<T> extends OrdCls<stx.Cluster<T>> {
   var inner : Ord<T>;
   public function new(inner){
     this.inner = inner;
