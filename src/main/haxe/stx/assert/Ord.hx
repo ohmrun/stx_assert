@@ -2,7 +2,7 @@ package stx.assert;
 
 import stx.assert.ord.term.*;
 import stx.assert.ord.term.Couple;
-import stx.assert.ord.term.EnumValue;
+import stx.assert.ord.term.EnumValueIndex;
 import stx.assert.ord.term.Array;
 import stx.assert.ord.term.Cluster;
 import stx.assert.ord.term.String;
@@ -70,10 +70,10 @@ abstract class OrdCls<T> implements OrdApi<T>{
   @:noUsing static public function NullOr<T>(inner:Ord<T>):Ord<Null<T>>{
     return new stx.assert.ord.term.NullOr(inner).toOrdApi();
   }
-  @:noUsing static public function EnumValue():Ord<StdEnumValue>{
-    return new EnumValue();
+  @:noUsing static public function EnumValueIndex():Ord<StdEnumValue>{
+    return new EnumValueIndex();
   }
-  @:noUsing static public function EnumValue():Ord<Ident>{
+  @:noUsing static public function Ident():Ord<Ident>{
     return new stx.assert.ord.term.Ident();
   }
 }

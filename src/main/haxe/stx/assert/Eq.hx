@@ -9,7 +9,7 @@ import stx.assert.eq.term.Int;
 import stx.assert.eq.term.Int64;
 import stx.assert.eq.term.String;
 import stx.assert.eq.term.Cluster;
-import stx.assert.eq.term.EnumValue;
+import stx.assert.eq.term.EnumValueIndex;
 import stx.assert.eq.term.NullOr;
 
 interface EqApi<T>{
@@ -65,14 +65,14 @@ abstract class EqCls<T> implements EqApi<T>{
   @:noUsing static public function Option<T>(inner:Eq<T>):Eq<Option<T>>{
     return new stx.assert.eq.term.Option(inner);
   }
-  @:noUsing static public function EnumValue():Eq<StdEnumValue>{
-    return new EnumValue();
+  @:noUsing static public function EnumValueIndex():Eq<StdEnumValue>{
+    return new EnumValueIndex();
   }
   @:noUsing static public function NullOr<T>(inner:Eq<T>):Eq<Null<T>>{
     return new stx.assert.eq.term.NullOr(inner);
   }
   @:noUsing static public function Ident():Eq<Ident>{
-    return new stx.assert.eq.term.Ident(inner);
+    return new stx.assert.eq.term.Ident();
   }
 }
 
