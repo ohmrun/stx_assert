@@ -10,6 +10,7 @@ typedef Comparable<P>           = stx.assert.Comparable<P>;
 
 typedef Equal                   = stx.assert.Equal;
 
+typedef EqCls<T>                = stx.assert.Eq.EqCls<T>;
 typedef EqApi<T>                = stx.assert.Eq.EqApi<T>;
 typedef Eq<T>                   = stx.assert.Eq<T>;
 
@@ -19,7 +20,7 @@ typedef Equalable<T>            = stx.assert.Equalable<T>;
 typedef EqualedSum              = stx.assert.Equaled.EqualedSum;
 typedef Equaled                 = stx.assert.Equaled;
 
-typedef OrdCls<T>               = stx.assert.Ord.OrdCls<T>;
+typedef OrdCls`<T>               = stx.assert.Ord.OrdCls<T>;
 typedef OrdApi<T>               = stx.assert.Ord.OrdApi<T>;
 typedef Ord<T>                  = stx.assert.Ord<T>;
 

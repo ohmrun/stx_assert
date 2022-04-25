@@ -73,4 +73,7 @@ abstract class OrdCls<T> implements OrdApi<T>{
   @:noUsing static public function EnumValue():Ord<StdEnumValue>{
     return new EnumValue();
   }
+  @:noUsing static public function EnumValue():Ord<Ident>{
+    return new stx.assert.ord.term.Ident();
+  }
 }

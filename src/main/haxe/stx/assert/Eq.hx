@@ -15,7 +15,9 @@ import stx.assert.eq.term.NullOr;
 interface EqApi<T>{
   public function comply(lhs:T,rhs:T):Equaled;
 }
-
+abstract class EqCls<T> implements EqApi<T>{
+  abstract public function comply(lhs:T,rhs:T):Equaled;
+}
 @:forward abstract Eq<T>(EqApi<T>) from EqApi<T> to EqApi<T>{
   public function new(self){
     this = self;
@@ -69,4 +71,8 @@ interface EqApi<T>{
   @:noUsing static public function NullOr<T>(inner:Eq<T>):Eq<Null<T>>{
     return new stx.assert.eq.term.NullOr(inner);
   }
+  @:noUsing static public function Ident():Eq<Ident>{
+    return new stx.assert.eq.term.Ident(inner);
+  }
 }
+
