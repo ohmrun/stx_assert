@@ -32,4 +32,7 @@ interface ComparableApi<P> extends EqualableApi<P> extends OrderableApi<P>{
   @:noUsing static public function Cluster<T>(inner:Comparable<T>):Comparable<stx.Cluster<T>>{
     return new stx.assert.comparable.term.Cluster(inner);
   }
+  @:noUsing static public function Lazy<T>(?eq:Eq<T>,?lt:Ord<T>):Comparable<T>{
+    return new stx.assert.comparable.term.Lazy(eq,lt);
+  }
 }
