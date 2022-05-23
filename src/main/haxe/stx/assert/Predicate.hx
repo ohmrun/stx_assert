@@ -114,7 +114,7 @@ class PredicateLift{
     return new Not(self);
   }
 
-  static public function errata<T,E,EE>(self: Predicate<T,E>,fn:Rejection<E>->Rejection<EE>):Predicate<T,EE>{
+  static public function errata<T,E,EE>(self: Predicate<T,E>,fn:Refuse<E>->Refuse<EE>):Predicate<T,EE>{
     return new Transform(self,fn);
   }
   static public function errate<T,E,EE>(self:Predicate<T,E>,fn:E->EE):Predicate<T,EE>{

@@ -3,7 +3,7 @@ package stx.assert.assertion.term;
 class Errata<T,E,EE> implements AssertionApi<T,EE> {
   
   final delegate  : AssertionApi<T,E>;
-  final errata    : Rejection<E> -> Rejection<EE>;
+  final errata    : Refuse<E> -> Refuse<EE>;
   final pos       : Pos;
   
   public function new(delegate,errata,?pos:Pos){
