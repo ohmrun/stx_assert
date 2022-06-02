@@ -1,5 +1,6 @@
 package stx.assert.ord.term;
 
+//TODO: this is Exists
 class NullOr<T> extends OrdCls<Null<T>>{
   public var inner(default,null):Ord<T>;
   public function new(inner){

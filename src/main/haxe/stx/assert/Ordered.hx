@@ -1,5 +1,6 @@
 package stx.assert;
 
+@:using(stx.assert.Ordered.OrderedLift)
 enum abstract OrderedSum(Bool) from Bool{
   var LessThan    = true;
   var NotLessThan = false;
@@ -8,7 +9,7 @@ enum abstract OrderedSum(Bool) from Bool{
     return this;
   }
 }
-
+@:using(stx.assert.Ordered.OrderedLift)
 @:forward abstract Ordered(OrderedSum) from OrderedSum to OrderedSum{
   public function new(self){
     this = self;
@@ -37,11 +38,12 @@ enum abstract OrderedSum(Bool) from Bool{
   public function and(that:Ordered):Ordered{
     return toBool() && that.toBool();
   }
-  public function is_not_less_than(){
-    return switch(this){
+}
+class OrderedLift{
+  static public function is_not_less_than(self:OrderedSum){
+    return switch(self){
       case NotLessThan : true;
       default          : false;
     }
   }
 }
-

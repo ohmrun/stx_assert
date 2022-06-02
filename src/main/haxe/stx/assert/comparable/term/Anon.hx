@@ -1,6 +1,6 @@
 package stx.assert.comparable.term;
 
-class Anon<T> implements ComparableApi<T>{
+class Anon<T> extends ComparableCls<T>{
   final _eq     : Eq<T>;
   final _lt     : Ord<T>;
   public function new(_eq,_lt){

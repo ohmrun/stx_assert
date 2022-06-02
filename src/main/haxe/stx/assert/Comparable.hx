@@ -7,11 +7,18 @@ import stx.assert.comparable.term.Couple;
 
 
 interface ComparableApi<P> extends EqualableApi<P> extends OrderableApi<P>{
-  
+  public function toComparable():Comparable<P>;
 } 
+abstract class ComparableCls<P> implements ComparableApi<P>{
+  abstract public function eq():Eq<P>;
+  abstract public function lt():Ord<P>;
 
+  public function toComparable():Comparable<P>{
+    return this;
+  }
+}
 @:forward abstract Comparable<T>(ComparableApi<T>) from ComparableApi<T> to ComparableApi<T>{
-
+  
   public function new(self) this = self;
   
   @:noUsing static public function Int():Comparable<StdInt>{

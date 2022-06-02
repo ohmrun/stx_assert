@@ -1,11 +1,10 @@
 package stx.assert.comparable.term;
 
-class Base<T> implements ComparableApi<T> extends Clazz{
+class Base<T> extends ComparableCls<T>{
   var _eq : Eq<T>;
   var _lt : Ord<T>;
 
   public function new(_eq,_ord){
-    super();
     this._eq    = _eq;
     this._lt    = _ord;
   }
@@ -14,8 +13,5 @@ class Base<T> implements ComparableApi<T> extends Clazz{
   }
   public function lt() : Ord<T>{
     return _lt;
-  }
-  public function toString(){
-    return identifier(); 
   }
 }

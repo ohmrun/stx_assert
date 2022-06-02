@@ -1,6 +1,6 @@
 package stx.assert.comparable.term;
 
-class Cluster<T> implements ComparableApi<stx.Cluster<T>>{
+class Cluster<T> extends ComparableCls<stx.Cluster<T>>{
   final delegate : Comparable<T>;
   public function new(delegate){
     this.delegate = delegate;

@@ -1,6 +1,7 @@
 package stx.assert.comparable.term;
 
-class Int implements ComparableApi<StdInt> extends Clazz{
+class Int extends ComparableCls<StdInt>{
+  public function new(){}
   public function eq() : Eq<StdInt>{
     return Eq.Int();
   }

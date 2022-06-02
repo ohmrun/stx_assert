@@ -74,5 +74,8 @@ abstract class EqCls<T> implements EqApi<T>{
   @:noUsing static public function Ident():Eq<Ident>{
     return new stx.assert.eq.term.Ident();
   }
+  @:noUsing static public function Register():Eq<Register>{
+    return new stx.assert.eq.term.Register();
+  }
 }
 

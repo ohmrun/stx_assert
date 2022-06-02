@@ -5,6 +5,7 @@ typedef AssertFailure           = stx.fail.AssertFailure;
 typedef AssertionApi<P,E>       = stx.assert.Assertion.AssertionApi<P,E>;
 typedef Assertion<P,E>          = stx.assert.Assertion<P,E>;
 
+typedef ComparableCls<P>        = stx.assert.Comparable.ComparableCls<P>;
 typedef ComparableApi<P>        = stx.assert.Comparable.ComparableApi<P>;
 typedef Comparable<P>           = stx.assert.Comparable<P>;
 
@@ -56,3 +57,12 @@ typedef PartialOrdered                = stx.assert.PartialOrder.PartialOrdered;
 typedef PartialOrdApi<T>              = stx.assert.PartialOrder.PartialOrdApi<T>;
 typedef PartialOrderableApi<T>        = stx.assert.PartialOrder.PartialOrderableApi<T>;
 typedef PartialComparableApi<T>       = stx.assert.PartialOrder.PartialComparableApi<T>;
+
+class AssertCtr{
+  static public function Assert(wildcard:Wildcard):Stx<stx.stub.Assert>{
+    return __.stx();
+  }
+  static public function Comparable(stub:Stx<stx.stub.Assert>){
+    return new stx.assert.stub.Comparable();
+  }
+}

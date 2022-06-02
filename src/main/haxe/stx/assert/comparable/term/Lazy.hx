@@ -1,6 +1,6 @@
 package stx.assert.comparable.term;
 
-class Lazy<T> implements ComparableApi<T>{
+class Lazy<T> extends ComparableCls<T>{
   public var _eq     : Eq<T>;
   public var _lt     : Ord<T>;
   public function new(_eq,_lt){

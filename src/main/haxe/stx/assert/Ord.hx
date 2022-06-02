@@ -76,4 +76,7 @@ abstract class OrdCls<T> implements OrdApi<T>{
   @:noUsing static public function Ident():Ord<Ident>{
     return new stx.assert.ord.term.Ident();
   }
+  @:noUsing static public function Register():Ord<Register>{
+    return new stx.assert.ord.term.Register();
+  }
 }

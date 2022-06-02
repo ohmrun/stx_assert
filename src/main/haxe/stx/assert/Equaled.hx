@@ -7,13 +7,19 @@ enum abstract EqualedSum(Bool) from Bool{
   public function is_ok():Bool{
     return this;
   }
+  public function is_equal():Bool{
+    return this;
+  }
+  public function are_equal():Bool{
+    return this;
+  }
   @:op(A && B)
   public function and(that:Equaled):Equaled{
     return ((this && that.is_ok()):Equaled);
   }
 }
 
-@:forward @:allow(stx.assert.Equaled)abstract Equaled(EqualedSum) from EqualedSum to EqualedSum{
+@:forward @:allow(stx.assert.Equaled) abstract Equaled(EqualedSum) from EqualedSum to EqualedSum{
   @:from static public function fromBool(b:Bool):Equaled{
     return b  ? AreEqual : NotEqual;
   }

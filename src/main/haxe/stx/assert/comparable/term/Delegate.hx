@@ -1,6 +1,6 @@
 package stx.assert.comparable.term;
 
-class Delegate<T> implements ComparableApi<T>{
+class Delegate<T> extends ComparableCls<T>{
   public var inner     : Comparable<T>;
   public function new(?inner){
     this.inner = inner;
