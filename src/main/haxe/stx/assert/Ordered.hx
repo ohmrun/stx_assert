@@ -46,4 +46,10 @@ class OrderedLift{
       default          : false;
     }
   }
+  static public function is_less_than(self:OrderedSum){
+    return switch(self){
+      case NotLessThan : false;
+      default          : true;
+    }
+  }
 }

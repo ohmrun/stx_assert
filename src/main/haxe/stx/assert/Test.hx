@@ -11,6 +11,6 @@ class Test{
     var test = [
       new ComparablesTest(),
     ];
-    __.test(test,[]);
+    __.test().run(test,[]);
   }
 }

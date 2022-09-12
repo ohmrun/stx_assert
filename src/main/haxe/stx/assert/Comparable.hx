@@ -16,11 +16,15 @@ abstract class ComparableCls<P> implements ComparableApi<P>{
   public function toComparable():Comparable<P>{
     return this;
   }
+  
 }
 @:forward abstract Comparable<T>(ComparableApi<T>) from ComparableApi<T> to ComparableApi<T>{
   
   public function new(self) this = self;
   
+  @:noUsing static public function Register():Comparable<stx.nano.Register>{
+    return new stx.assert.comparable.term.Register();
+  }
   @:noUsing static public function Int():Comparable<StdInt>{
     return new Int();
   }
@@ -41,5 +45,20 @@ abstract class ComparableCls<P> implements ComparableApi<P>{
   }
   @:noUsing static public function Lazy<T>(?eq:Eq<T>,?lt:Ord<T>):Comparable<T>{
     return new stx.assert.comparable.term.Lazy(eq,lt);
+  }
+  @:noUsing static public function KV<K,V>(K:Comparable<K>,V:Comparable<V>):Comparable<stx.nano.KV<K,V>>{
+    return new stx.assert.comparable.term.KV(K,V);
+  }
+  public function copy(?eq:Eq<T>,?lt:Ord<T>):Comparable<T>{
+    return Anon(
+      __.option(eq).defv(this.eq()),
+      __.option(lt).defv(this.lt())
+    );
+  }
+  public function is_greater_or_equal(self:T,that:T):Bool{
+    return this.eq().comply(self,that).is_equal().if_else(
+      () -> true,
+      () -> this.lt().comply(that,self).is_less_than()
+    );
   }
 }

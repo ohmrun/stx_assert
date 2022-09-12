@@ -2,6 +2,7 @@ package stx.assert;
 
 import stx.assert.ord.term.*;
 import stx.assert.ord.term.Couple;
+import stx.assert.ord.term.KV;
 import stx.assert.ord.term.EnumValueIndex;
 import stx.assert.ord.term.Array;
 import stx.assert.ord.term.Cluster;
@@ -26,8 +27,11 @@ abstract class OrdCls<T> implements OrdApi<T>{
 }
 
 @:forward abstract Ord<T>(OrdApi<T>) from OrdApi<T> to OrdApi<T>{
-  public function new(self){
+  public inline function new(self){
     this = self;
+  }
+  @:noUsing static public inline function lift<T>(self:OrdApi<T>){
+    return new Ord(self);
   }
   @:to public function toAssertion():Assertion<T,AssertFailure>{
     return new OrdAssertion(this).asAssertionApi();
@@ -47,6 +51,9 @@ abstract class OrdCls<T> implements OrdApi<T>{
   @:noUsing static public function Couple<L,R>(l,r):Ord<stx.nano.Couple<L,R>>{
     return new Couple(l,r);
   }
+  @:noUsing static public function KV<L,R>(l,r):Ord<stx.nano.KV<L,R>>{
+    return new KV(l,r);
+  }
   @:noUsing static public function Anon<T>(fn:T->T->Ordered):Ord<T>{
     return new Anon(fn);
   }
@@ -60,6 +67,9 @@ abstract class OrdCls<T> implements OrdApi<T>{
   }
   @:noUsing static public function Array<T>(inner:Ord<T>):Ord<StdArray<T>>{
     return new Array(inner);
+  }
+  @:noUsing static public function Record<T>(inner:Ord<T>):Ord<stx.Record<T>>{
+    return new stx.assert.ord.term.Record(inner);
   }
   @:noUsing static public function Cluster<T>(inner:Ord<T>):Ord<stx.Cluster<T>>{
     return new Cluster(inner);
@@ -78,5 +88,8 @@ abstract class OrdCls<T> implements OrdApi<T>{
   }
   @:noUsing static public function Register():Ord<Register>{
     return new stx.assert.ord.term.Register();
+  }
+  @:noUsing static public function Exists():Ord<Dynamic>{
+    return new stx.assert.ord.term.Exists();
   }
 }
