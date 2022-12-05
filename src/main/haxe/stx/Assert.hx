@@ -11,6 +11,7 @@ typedef Comparable<P>           = stx.assert.Comparable<P>;
 
 typedef Equal                   = stx.assert.Equal;
 
+typedef EqCtr                   = stx.assert.Eq.EqCtr;
 typedef EqCls<T>                = stx.assert.Eq.EqCls<T>;
 typedef EqApi<T>                = stx.assert.Eq.EqApi<T>;
 typedef Eq<T>                   = stx.assert.Eq<T>;
@@ -42,6 +43,7 @@ typedef ComparativeSum          = stx.assert.Comparative.ComparativeSum;
 typedef Compare<T>              = stx.assert.Compare<T>;
 
 class LiftAssert{
+  //TODO: sane naming convention
   static public inline function that<T,E>(stx:Wildcard,?pos:Pos){
     return new stx.assert.Module(pos);
   }

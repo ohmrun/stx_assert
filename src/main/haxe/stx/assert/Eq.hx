@@ -19,7 +19,11 @@ interface EqApi<T>{
 abstract class EqCls<T> implements EqApi<T>{
   abstract public function comply(lhs:T,rhs:T):Equaled;
 }
+class EqCtr extends Clazz{
+
+}
 @:forward abstract Eq<T>(EqApi<T>) from EqApi<T> to EqApi<T>{
+  static public var __(default,never) = new EqCtr();
   public inline function new(self){
     this = self;
   }
