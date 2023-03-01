@@ -12,11 +12,11 @@
   "releasenote": "",
   "version": "0.2.0",
   "dependencies": {
-      "tink_core"     : "git:https://github.com/haxetink/tink_core.git",
+      "tink_core"     : "",
       
-      "stx_pico"      : "git:https://github.com/ohmrun/stx_pico.git",
-      "stx_nano"      : "git:https://github.com/ohmrun/stx_nano.git",
-      "stx_fn"        : "git:https://github.com/ohmrun/stx_fn.git"
+      "stx_pico"      : "",
+      "stx_nano"      : "",
+      "stx_fn"        : ""
   },
   "classPath": "src/main/haxe"
 }
