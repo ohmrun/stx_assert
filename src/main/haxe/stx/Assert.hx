@@ -61,7 +61,7 @@ typedef PartialOrderableApi<T>        = stx.assert.PartialOrder.PartialOrderable
 typedef PartialComparableApi<T>       = stx.assert.PartialOrder.PartialComparableApi<T>;
 
 class AssertCtr{
-  static public function Assert(wildcard:Wildcard):stx.stub.Assert{
+  static public function Assert(wildcard:Wildcard):Stx<stx.stub.Assert>{
     return __.stx();
   }
   static public function Comparable(stub:stx.stub.Assert){

@@ -1,6 +1,7 @@
-.ionide
-test.n
-log.html
-test.hxml
-bin
+/.ionide
+/test.n
+/log.html
+/test.hxml
+/bin
 /.vscode
+/.emv.machine
