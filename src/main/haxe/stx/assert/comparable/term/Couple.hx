@@ -1,5 +1,7 @@
 package stx.assert.comparable.term;
 
+import stx.nano.Couple as StdCouple;
+
 class Couple<L,R> extends ComparableCls<StdCouple<L,R>>{
   var l : Comparable<L>;
   var r : Comparable<R>;
