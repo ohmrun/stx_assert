@@ -4,4 +4,4 @@
 /test.hxml
 /bin
 /.vscode
-/.emv.machine
+/.env.machine
