@@ -1,5 +1,8 @@
 package stx.assert;
 
+import stx.nano.Couple as StdCouple;
+
+
 import stx.assert.eq.term.Primitive; 
 import stx.assert.eq.term.Noise; 
 import stx.assert.eq.term.Anon;
