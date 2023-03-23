@@ -1,5 +1,7 @@
 package stx.assert;
 
+import stx.nano.Couple as StdCouple;
+
 import stx.assert.comparable.term.Primitive;
 import stx.assert.comparable.term.Int;
 import stx.assert.comparable.term.String;

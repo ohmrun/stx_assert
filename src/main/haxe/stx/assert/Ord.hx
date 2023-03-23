@@ -1,5 +1,7 @@
 package stx.assert;
 
+import stx.nano.Couple as StdCouple;
+
 import stx.assert.ord.term.*;
 import stx.assert.ord.term.Couple;
 import stx.assert.ord.term.KV;
