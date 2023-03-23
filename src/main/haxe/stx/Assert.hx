@@ -1,5 +1,9 @@
 package stx;
 
+using stx.Pico;
+using stx.Fail;
+using stx.Nano;
+
 typedef AssertFailure           = stx.fail.AssertFailure;
 
 typedef AssertionApi<P,E>       = stx.assert.Assertion.AssertionApi<P,E>;
