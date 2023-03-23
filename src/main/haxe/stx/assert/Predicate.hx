@@ -1,5 +1,8 @@
 package stx.assert;
 
+// TODO stx_release fix
+import stx.fail.Refuse;
+
 import stx.assert.predicate.term.*;
 
 interface PredicateApi<P,E>{
