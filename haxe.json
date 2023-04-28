@@ -19,7 +19,11 @@
       }     
     },
     "test" : { 
-      "-cp" : "src/main/test"
+      "-cp"         : "src/test/haxe",
+      "--main"      : "stx.assert.Test",
+      "interp" : {
+        "--interp" : true
+      }
     }
   }
 }
