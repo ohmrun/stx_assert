@@ -8,6 +8,7 @@ class StringMap<T> extends EqCls<TStringMap<T>>{
     this.inner = inner;
   }
   public function comply(lhs:TStringMap<T>,rhs:TStringMap<T>):Equaled{
+    trace('$lhs $rhs');
     final lhs_keys = lhs.keys();
     final rhs_keys = rhs.keys();
 
@@ -74,9 +75,15 @@ class StringMap<T> extends EqCls<TStringMap<T>>{
         set = set_add(set,x);
       }
       var eq = true;
-      //trace(set);
+      // trace(set);
       for(x in set){
-        eq = lhs.get(x) ==  rhs.get(x);
+        // trace(x);
+        final l = lhs.get(x);
+        // trace(lhs);
+        // trace(rhs);
+        final r = rhs.get(x);
+        // trace('$x $l $r');
+        eq = l == r;
         if(!eq){
           break;
         }
