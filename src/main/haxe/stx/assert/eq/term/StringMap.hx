@@ -8,7 +8,7 @@ class StringMap<T> extends EqCls<TStringMap<T>>{
     this.inner = inner;
   }
   public function comply(lhs:TStringMap<T>,rhs:TStringMap<T>):Equaled{
-    trace('$lhs $rhs');
+    //trace('$lhs $rhs');
     final lhs_keys = lhs.keys();
     final rhs_keys = rhs.keys();
 
