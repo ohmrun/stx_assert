@@ -9,7 +9,8 @@ import stx.assert.test.*;
 class Test{
   static public function main(){
     var test = [
-      new ComparablesTest(),
+      //new ComparablesTest(),
+      new StringMapTest(),
     ];
     __.test().run(test,[]);
   }
