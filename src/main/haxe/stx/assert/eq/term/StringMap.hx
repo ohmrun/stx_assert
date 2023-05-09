@@ -16,7 +16,7 @@ class StringMap<T> extends EqCls<TStringMap<T>>{
       return if(lstr.length < rstr.length){
         Left(LessThan);
       }else if(lstr.length == rstr.length){
-        Chars._.iter(lstr).zip(Chars._.iter(rstr)).lfold(
+        Chars._.toIter(lstr).zip(Chars._.toIter(rstr)).lfold(
           function (next:Couple<StdString,StdString>,memo:Option<Either<Ordered,Equaled>>):Option<Either<Ordered,Equaled>>{
             //trace('$next');
             return switch(memo){
