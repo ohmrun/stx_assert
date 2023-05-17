@@ -47,11 +47,13 @@ typedef ComparativeSum          = stx.assert.Comparative.ComparativeSum;
 typedef Compare<T>              = stx.assert.Compare<T>;
 
 class LiftAssert{
-  //TODO: sane naming convention
-  static public inline function that<T,E>(stx:Wildcard,?pos:Pos){
-    return new stx.assert.Module(pos);
-  }
-  static public function assert(__:Wildcard,?pos:Pos) return new stx.assert.module.Crunch(pos);
+  /**
+   * `stx.nano.Wildcard` entry point for `stx_assert`
+   * @param __ 
+   * @param pos 
+   * @return return new stx.assert.Module(pos)
+   */
+  static public function assert(__:Wildcard,?pos:Pos) return new stx.assert.Module(pos);
 
   static public function expect<E>(b:Bool,err:Refuse<E>){
     return b ? Report.unit() : Report.pure(err);
