@@ -41,6 +41,7 @@ class EqCtr extends Clazz{
 }
 /**
  * Abstract for equality function Api
+ * Individual constructors at `__.assert().Eq()`.
  */
 @:forward abstract Eq<T>(EqApi<T>) from EqApi<T> to EqApi<T>{
   static public var __(default,never) = new EqCtr();

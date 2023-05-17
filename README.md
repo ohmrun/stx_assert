@@ -1,27 +1,63 @@
 # stx_assert
 
-includes ```Predicate Assertion Assertation Eq Ord```
+includes ```Predicate Assertion Assertation Eq Ord Comparable```
 
 ## Usage
 
+### Assertions
 ```haxe
 using stx.Nano;//Wildcard
 using stx.Assert;
 
 class Main{
  static public function main(){
-   __.assert().equals(1,2);//throws Err
-   __.that().equals().ok(1,2)//returns false
-   __.that().equals().crunchII(1,2)//throws Err
+   __.assert().that().equals(1,2);//throws Refuse
+   __.assert().expect().ok(1,2)//returns false
+   __.assert().expect().crunchII(1,2)//throws Refuse
 
   var a = 1;
-   __.that().exists().and(
-    __.that().equals().bindI(1)
-   ).ok(a)//returns true
+   __.assert().expect().exists().and(
+    __.assert().expect().equals().bindI(1)
+   ).is_ok(a)//returns true
  }
 }
 ```
 
+### Ord, Eq and Comparable
+```haxe
+  final Ord = __.assert().Ord();
+  final Eq  = __.assert().Eq();
+
+  class Main{
+    static public function main(){
+      final ord = Ord.Couple(Ord.String(),Ord.Int());
+      final eq  = Eq.Couple(Eq.String(),Eq.Int());
+    }
+  }
+```
+
+### Adding a Constructor
+
+```haxe
+  using MyClassOrdTagCtr;
+  final Ord = __.assert().Ord();
+  
+  class Main{
+    static public function main(){
+      final ord = Ord.StringMap(Ord.MyClass());//Using the static extension of `TAG`
+    }
+  }
+  private typedef TAG = STX<Ord<MyClass>>;
+
+  class MyClassOrdTagCtr{
+    static public function MyClass(tag:TAG){
+      return new MyClassOrd();
+    }
+  }
+  class MyClassOrd extends Ord<MyClass>{
+    //....
+  }
+```
 ## Assertions
 ```haxe
 function equals<T>(lhs:T,rhs:T)                              
@@ -45,39 +81,44 @@ function matches<E>(string:String,reg:String,opt:String)
 
 ## Predicate Grammar
 
+`ands` produces a predicate that succeeds if all input predicates succeed.
 ```haxe
 ands<T,E>(self: Predicate<T,E>,rest: Iterable<Predicate<T,E>>): Predicate<T,E> 
 ```
-Produces a predicate that succeeds if all input predicates succeed.
 
+
+`ors` produces a predicate that succeeds if any of the input predicates succeeds.  
 ```haxe
 ors<T,E>(self: Predicate<T,E>,rest: Iterable<Predicate<T,E>>): Predicate<T,E >
 ```
-Produces a predicate that succeeds if any of the input predicates succeeds.
 
 
+`and` produces a predicate that succeeds if both succeed.
 ```haxe
 and<T,E>(self: Predicate<T,E>,that: Predicate<T,E>): Predicate<T,E>
 ```
-Produces a predicate that succeeds if both succeed.
 
+
+`or` produces a predicate that succeeds if one or other predicates succeed.
 ```haxe
 or<T,E>(self: Predicate<T,E>,that: Predicate<T,E>): Predicate<T,E>
 ```
-Produces a predicate that succeeds if one or other predicates succeed.
-  
+
+
+`xor` produces a predicate that succeeds if one or other , but not both predicates succeed.  
 ```haxe
 xor<T,E>(self: Predicate<T,E>, that: Predicate<T,E>): Predicate<T,E>
 ```
-Produces a predicate that succeeds if one or other , but not both predicates succeed.
 
+
+`not` produces a predicate that succeeds if the input predicate fails.
 ```haxe
 not<T,E>(self: Predicate<T,E>):Predicate<T,E>
 ```
 
-Produces a predicate that succeeds if the input predicate fails.
- 
+
+
+`errata` maps the `stx.nano.Report` datatype.
 ```haxe
-  errata<T,E,EE>(self: Predicate<T,E>,fn:Err<E>->Err<EE>):Predicate<T,EE>
+  errata<T,E,EE>(self: Predicate<T,E>,fn:Report<E>->Report<EE>):Predicate<T,EE>
 ```
-Map the `Err` datatype.
