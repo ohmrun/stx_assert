@@ -1,9 +1,17 @@
-#  (2020-09-29)
+<a name="unreleased"></a>
+## [Unreleased]
 
 
-### Features
+<a name="v0.2.1"></a>
+## v0.2.1 - 2023-06-15
+### Chore
+- started changelog
+- bump version to 0.1.1
 
-* added Ord.Option, Comparable.Anon f4d9f11
-* moving build.hxml to test.hxml 2fe4cc5
+### Feat
+- Add `Map` to Ord/Eq constructors
+- added Ord.Option, Comparable.Anon
+- moving build.hxml to test.hxml
 
 
+[Unreleased]: github.com/ohmrun/stx_assert/compare/v0.2.1...HEAD
